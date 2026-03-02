@@ -123,7 +123,7 @@
 
 <!-- The nav wraps both the bar and the dropdown so onmouseleave fires only when leaving both -->
 <nav
-	class="relative z-50 bg-stone-950 border-b border-stone-800"
+	class="sticky top-0 z-50 bg-stone-950 border-b border-stone-800"
 	onmouseleave={() => (activeMenu = null)}
 >
 	<!-- ── Nav bar row ── -->
@@ -169,6 +169,13 @@
 					</button>
 				{/each}
 
+				<a
+					href="/affiliates"
+					class="rounded-md px-4 py-2 text-sm font-medium text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
+					onmouseenter={() => (activeMenu = null)}
+				>
+					Affiliates
+				</a>
 				<a
 					href="/about"
 					class="rounded-md px-4 py-2 text-sm font-medium text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
@@ -293,7 +300,14 @@
 					</div>
 				{/each}
 
-				<div class="border-t border-stone-800 pt-3">
+				<div class="border-t border-stone-800 pt-3 space-y-0.5">
+					<a
+						href="/affiliates"
+						class="block rounded-md px-3 py-2 text-sm text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
+						onclick={closeAll}
+					>
+						Affiliates
+					</a>
 					<a
 						href="/about"
 						class="block rounded-md px-3 py-2 text-sm text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
