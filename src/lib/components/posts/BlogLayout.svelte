@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
 	import { onMount } from 'svelte';
+	import DonationSection from '$lib/components/landingPage/DonationSection.svelte';
 
 	export interface NavSection {
 		id: string;
@@ -153,4 +154,6 @@
 			{@render children()}
 		</div>
 	</div>
+
+	<DonationSection />
 </article>
