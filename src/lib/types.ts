@@ -6,6 +6,8 @@ export interface BuildCard {
 	tags: string[];
 	href: string;
 	featured?: boolean;
+	image?: string; // filename in src/lib/assets/buildThumbnail/, e.g. 'CHESS_SHOWCASE.png'
+	alt?: string;   // alt text for the image
 }
 
 export interface PostCard {

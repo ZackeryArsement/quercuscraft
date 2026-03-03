@@ -17,39 +17,7 @@
 	}
 
 	const navItems: NavItem[] = [
-		{
-			id: 'builds',
-			label: 'Builds',
-			sections: [
-				{
-					title: 'Browse',
-					links: [
-						{ label: 'All Builds', href: '/builds', description: 'The full gallery' },
-						{ label: 'Featured', href: '/builds/featured', description: 'Hand-picked showcases' },
-						{ label: 'Latest', href: '/builds/latest', description: 'Most recently posted' }
-					]
-				},
-				{
-					title: 'By Style',
-					links: [
-						{ label: 'Medieval', href: '/builds/medieval' },
-						{ label: 'Modern', href: '/builds/modern' },
-						{ label: 'Fantasy', href: '/builds/fantasy' },
-						{ label: 'Survival', href: '/builds/survival' },
-						{ label: 'Redstone', href: '/builds/redstone' }
-					]
-				},
-				{
-					title: 'By Scale',
-					links: [
-						{ label: 'Mega Builds', href: '/builds/mega' },
-						{ label: 'Base Builds', href: '/builds/base' },
-						{ label: 'Detail Pieces', href: '/builds/detail' }
-					]
-				}
-			]
-		},
-		{
+		/*{
 			id: 'tutorials',
 			label: 'Tutorials',
 			sections: [
@@ -72,27 +40,27 @@
 					]
 				}
 			]
-		},
+		},*/
 		{
 			id: 'downloads',
-			label: 'World Downloads',
+			label: 'Downloads',
 			sections: [
 				{
 					title: 'Files',
 					links: [
-						{ label: 'Full Worlds', href: '/downloads/worlds', description: 'Complete world saves' },
-						{ label: 'Schematics', href: '/downloads/schematics', description: 'Individual structures' }
+						{ label: 'Full Worlds', href: '/builds', description: 'Complete world saves' }/*,
+						{ label: 'Schematics', href: '/downloads/schematics', description: 'Individual structures' }*/
 					]
-				},
+				}/*,
 				{
 					title: 'Resources',
 					links: [
 						{ label: 'Resource Packs', href: '/downloads/resource-packs' },
 						{ label: 'Data Packs', href: '/downloads/data-packs' }
 					]
-				}
+				}*/
 			]
-		},
+		}/*,
 		{
 			id: 'blog',
 			label: 'Blog',
@@ -107,7 +75,7 @@
 					]
 				}
 			]
-		}
+		}*/
 	];
 
 	let activeMenu = $state<string | null>(null);
@@ -142,6 +110,14 @@
 
 			<!-- Desktop links -->
 			<div class="hidden items-center gap-0.5 md:flex">
+				<a
+					href="/builds"
+					class="rounded-md px-4 py-2 text-sm font-medium text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
+					onmouseenter={() => (activeMenu = null)}
+					onclick={closeAll}
+				>
+					All Builds
+				</a>
 				{#each navItems as item}
 					<button
 						class="flex cursor-pointer items-center gap-1 rounded-md px-4 py-2 text-sm font-medium transition-colors {activeMenu ===
@@ -169,7 +145,7 @@
 					</button>
 				{/each}
 
-				<a
+				<!--<a
 					href="/affiliates"
 					class="rounded-md px-4 py-2 text-sm font-medium text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
 					onmouseenter={() => (activeMenu = null)}
@@ -182,7 +158,7 @@
 					onmouseenter={() => (activeMenu = null)}
 				>
 					About
-				</a>
+				</a>-->
 			</div>
 
 			<!-- Mobile hamburger -->
@@ -302,6 +278,13 @@
 
 				<div class="border-t border-stone-800 pt-3 space-y-0.5">
 					<a
+						href="/builds"
+						class="block rounded-md px-3 py-2 text-sm text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
+						onclick={closeAll}
+					>
+						All Builds
+					</a>
+					<!--<a
 						href="/affiliates"
 						class="block rounded-md px-3 py-2 text-sm text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
 						onclick={closeAll}
@@ -314,7 +297,7 @@
 						onclick={closeAll}
 					>
 						About
-					</a>
+					</a>-->
 				</div>
 			</div>
 		</div>

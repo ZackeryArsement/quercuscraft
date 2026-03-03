@@ -1,6 +1,20 @@
+/*
+ * ── Site Font ──────────────────────────────────────────────────────────────
+ * To swap the global font:
+ *   1. Replace the Google Fonts @import URL with the new family URL
+ *   2. Replace 'Outfit' in --font-site with the new family name
+ * Everything else updates automatically.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+
+@theme {
+	/* Overrides Tailwind's --font-sans so all default text uses the site font */
+	--font-sans: 'Outfit', system-ui, sans-serif;
+}
 
 /* ── Base resets ── */
 *,
@@ -12,6 +26,7 @@
 html {
 	scroll-behavior: smooth;
 	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /* ── Hero background ── */

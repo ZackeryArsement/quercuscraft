@@ -1,42 +1,13 @@
 <script lang="ts">
-	import type { BuildCard, PostCard, Affiliate } from '$lib/types';
-	import HeroSection from '$lib/components/HeroSection.svelte';
+	import type { PostCard, Affiliate } from '$lib/types';
+	import { builds } from '$lib/data/builds';
+	import HeroSection from '$lib/components/landingPage/HeroSection.svelte';
 	import FeaturedBuilds from '$lib/components/FeaturedBuilds.svelte';
 	import LatestPosts from '$lib/components/LatestPosts.svelte';
-	import QuickLinks from '$lib/components/QuickLinks.svelte';
-	import AffiliatesSection from '$lib/components/AffiliatesSection.svelte';
+	import QuickLinks from '$lib/components/landingPage/QuickLinks.svelte';
+	import AffiliatesSection from '$lib/components/landingPage/AffiliatesSection.svelte';
 
-	const builds: BuildCard[] = [
-		{
-			title: 'Chess Valley',
-			category: 'Game',
-			date: 'Jan 2026',
-			description: 'A playable chess map inside of a custom interactive valley, with a hidden puzzle.',
-			tags: ['Technical', 'Game', 'Puzzle'],
-			href: '/builds/chess-valley',
-			featured: true
-		},
-		{
-			title: 'Detector Rail Bamboo Farm',
-			category: 'Resource',
-			date: 'Jan 2026',
-			description: 'Innovative, tileable bamboo farm that does not break during chunk unloading',
-			tags: ['Survival', 'Technical', 'Farm', 'Bamboo'],
-			href: '/builds/detector-bamboo-farm',
-			featured: true
-		},
-		{
-			title: 'Bamboo Comparisons',
-			category: 'Resource',
-			date: 'Dec 2025',
-			description: 'Accumulation of different bamboo farms for gathering comparative results.',
-			tags: ['Technical', 'Farm', 'Bamboo'],
-			href: '/builds/bamboo-comparisons',
-			featured: true
-		}
-	];
-
-	const affiliates: Affiliate[] = [
+	/*const affiliates: Affiliate[] = [
 		{
 			name: 'GPORTAL',
 			description: 'Want to host your own server? Use GPORTAL, my go to server provider for whenever I want to play minecraft and have a smooth online experience',
@@ -51,7 +22,7 @@
 			category: 'VPN Provider',
 			gradient: ['#0b7a8a', '#7a9ea8']
 		}
-	];
+	];*/
 
 	const latestPosts: PostCard[] = [
 		{
@@ -88,5 +59,5 @@
 <HeroSection />
 <FeaturedBuilds {builds} />
 <LatestPosts posts={latestPosts} />
-<AffiliatesSection {affiliates} />
+<!-- <AffiliatesSection {affiliates} /> -->
 <QuickLinks />

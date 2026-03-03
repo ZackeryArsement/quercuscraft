@@ -20,8 +20,8 @@
 				<p class="mb-1 text-xs font-semibold tracking-widest text-green-400 uppercase">Showcase</p>
 				<h2 class="text-2xl font-bold text-white">Featured Builds</h2>
 			</div>
-			<a href="/builds/featured" class="text-sm text-stone-400 transition-colors hover:text-green-400">
-				View all →
+			<a href="/builds" class="text-sm text-stone-400 transition-colors hover:text-green-400">
+				View all Builds →
 			</a>
 		</div>
 

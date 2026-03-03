@@ -1,22 +1,37 @@
 <script lang="ts">
 	import type { BuildCard } from '$lib/types';
+	import { getBuildThumbnail } from '$lib/thumbnails';
 
 	let { build }: { build: BuildCard } = $props();
+
+	const imgSrc = $derived(build.image ? getBuildThumbnail(build.image) : null);
 </script>
 
 <a
 	href={build.href}
 	class="group flex flex-col overflow-hidden rounded-xl border border-stone-800 bg-stone-900 transition-colors hover:border-stone-600"
 >
-	<!-- Image placeholder -->
-	<div
-		class="h-48 bg-stone-800"
-		style="background-image: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%)"
-	>
-		<div class="flex h-full items-center justify-center">
-			<span class="text-4xl opacity-20" aria-hidden="true">⛏</span>
+	<!-- Thumbnail or placeholder -->
+	{#if imgSrc}
+		<img
+			src={imgSrc}
+			alt={build.alt ?? build.title}
+			loading='lazy'
+			fetchpriority='auto'
+			decoding="async"
+			width="410"
+			height="192"
+			class="h-48 w-full object-cover"
+		/>
+	{:else}
+		<div
+			class="flex h-48 items-center justify-center bg-stone-800"
+			style="background-image: linear-gradient(135deg, #1c1917 0%, #292524 50%, #1c1917 100%)"
+			aria-hidden="true"
+		>
+			<span class="text-4xl opacity-20">⛏</span>
 		</div>
-	</div>
+	{/if}
 
 	<div class="flex flex-1 flex-col p-5">
 		<div class="mb-3 flex flex-wrap gap-1.5">
