@@ -18,7 +18,7 @@
 		<span class="rounded-full px-2.5 py-0.5 text-xs font-medium {typeColors[post.type] ?? typeColors['Blog']}">
 			{post.type}
 		</span>
-		<span class="text-xs text-stone-600">{post.date}</span>
+		<span class="text-xs text-stone-400">{post.date}</span>
 	</div>
 
 	<h3 class="font-semibold text-white transition-colors group-hover:text-green-400">

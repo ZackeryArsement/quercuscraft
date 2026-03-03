@@ -1,11 +1,12 @@
 /*
  * ── Site Font ──────────────────────────────────────────────────────────────
  * To swap the global font:
- *   1. Replace the Google Fonts @import URL with the new family URL
- *   2. Replace 'Outfit' in --font-site with the new family name
+ *   1. npm install @fontsource-variable/<new-font>
+ *   2. Replace the @import below with the new package
+ *   3. Replace 'Outfit Variable' in --font-sans with the new family name
  * Everything else updates automatically.
  */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import '@fontsource-variable/outfit';
 
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
@@ -13,7 +14,7 @@
 
 @theme {
 	/* Overrides Tailwind's --font-sans so all default text uses the site font */
-	--font-sans: 'Outfit', system-ui, sans-serif;
+	--font-sans: 'Outfit Variable', system-ui, sans-serif;
 }
 
 /* ── Base resets ── */

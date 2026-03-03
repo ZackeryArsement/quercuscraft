@@ -37,7 +37,7 @@
 <section class="border-t border-stone-800 bg-stone-900 px-4 py-16 sm:px-6 lg:px-8">
 	<div class="mx-auto max-w-7xl">
 
-		<p class="mb-2 text-xs font-semibold tracking-widest text-stone-500 uppercase">Support the Creator</p>
+		<p class="mb-2 text-xs font-semibold tracking-widest text-stone-400 uppercase">Support the Creator</p>
 		<h2 class="mb-3 text-3xl font-bold text-white">Enjoying the builds?</h2>
 		<p class="mb-12 max-w-xl leading-relaxed text-stone-400">
 			Every world on this site is completely free. If you'd like to support future
@@ -57,12 +57,12 @@
 						</span>
 					{/if}
 
-					<p class="mb-4 text-xs font-semibold tracking-widest text-stone-500 uppercase">{tier.label}</p>
+					<p class="mb-4 text-xs font-semibold tracking-widest text-stone-400 uppercase">{tier.label}</p>
 
 					<div class="mb-4 flex items-baseline gap-1">
 						<span class="text-3xl font-bold text-white">{tier.price}</span>
 						{#if tier.period}
-							<span class="text-sm text-stone-500">{tier.period}</span>
+							<span class="text-sm text-stone-400">{tier.period}</span>
 						{/if}
 					</div>
 
@@ -80,7 +80,7 @@
 							Choose This Tier →
 						</a>
 					{:else}
-						<span class="block text-center py-2.5 px-4 text-sm font-bold border-2 border-stone-700 text-stone-600 cursor-default">
+						<span class="block text-center py-2.5 px-4 text-sm font-bold border-2 border-stone-700 text-stone-400 cursor-default">
 							Always Free
 						</span>
 					{/if}
@@ -88,6 +88,6 @@
 			{/each}
 		</div>
 
-		<p class="mt-8 text-xs text-stone-600">Monthly tiers via Patreon.</p>
+		<p class="mt-8 text-xs text-stone-400">Monthly tiers via Patreon.</p>
 	</div>
 </section>

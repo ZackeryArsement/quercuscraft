@@ -50,7 +50,7 @@
 
 	<!-- ── Donations ─────────────────────────────────────────────────────── -->
 	<div class="mb-12 border-b border-stone-700 pb-16">
-		<p class="mb-2 text-xs font-semibold tracking-widest text-stone-500 uppercase">
+		<p class="mb-2 text-xs font-semibold tracking-widest text-stone-400 uppercase">
 			Support the Creator
 		</p>
 		<h3 class="mb-3 text-3xl font-bold text-white">Enjoying the build?</h3>
@@ -75,14 +75,14 @@
 						</span>
 					{/if}
 
-					<p class="mb-2 xl:mb-5 text-xs font-semibold tracking-widest text-stone-500 uppercase">
+					<p class="mb-2 xl:mb-5 text-xs font-semibold tracking-widest text-stone-400 uppercase">
 						{tier.label}
 					</p>
 
 					<div class="mb-2 xl:mb-5 flex items-baseline gap-1">
 						<span class="text-2xl sm:text-3xl xl:text-4xl font-bold text-white">{tier.price}</span>
 						{#if tier.period}
-							<span class="text-xs xl:text-sm text-stone-500">{tier.period}</span>
+							<span class="text-xs xl:text-sm text-stone-400">{tier.period}</span>
 						{/if}
 					</div>
 
@@ -101,7 +101,7 @@
 						</a>
 					{:else}
 						<span
-							class="block cursor-default text-center py-1.5 px-2 xl:py-3 xl:px-4 text-xs xl:text-sm font-bold border-2 border-stone-700 text-stone-600"
+							class="block cursor-default text-center py-1.5 px-2 xl:py-3 xl:px-4 text-xs xl:text-sm font-bold border-2 border-stone-700 text-stone-400"
 						>
 							{tier.price === 'Free' ? 'Already Free ↑' : 'Coming Soon'}
 						</span>
@@ -110,7 +110,7 @@
 			{/each}
 		</div>
 
-		<p class="mt-8 text-xs text-stone-600">
+		<p class="mt-8 text-xs text-stone-400">
 			Monthly tier via Patreon. One-time tiers processed securely via Stripe.
 		</p>
 	</div>
@@ -128,7 +128,7 @@
 		<div class="mb-8 flex flex-wrap gap-4">
 			{#if minecraftVersion}
 				<div class="border border-stone-700 bg-stone-800 px-5 py-3">
-					<p class="mb-1 text-xs font-semibold tracking-widest text-stone-500 uppercase">
+					<p class="mb-1 text-xs font-semibold tracking-widest text-stone-400 uppercase">
 						Minecraft Version
 					</p>
 					<p class="text-sm font-medium text-white">{minecraftVersion}</p>
@@ -136,7 +136,7 @@
 			{/if}
 			{#if fileSize}
 				<div class="border border-stone-700 bg-stone-800 px-5 py-3">
-					<p class="mb-1 text-xs font-semibold tracking-widest text-stone-500 uppercase">
+					<p class="mb-1 text-xs font-semibold tracking-widest text-stone-400 uppercase">
 						File Size
 					</p>
 					<p class="text-sm font-medium text-white">{fileSize}</p>

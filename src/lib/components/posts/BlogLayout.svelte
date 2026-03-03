@@ -35,21 +35,22 @@
 
 	onMount(() => {
 		const allIds = navSections.flatMap((s) => [s.id, ...(s.sub?.map((ss) => ss.id) ?? [])]);
-		const observers: IntersectionObserver[] = [];
+
+		const obs = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) activeId = entry.target.id;
+				}
+			},
+			{ rootMargin: '-5% 0px -55% 0px', threshold: 0 }
+		);
 
 		for (const id of allIds) {
 			const el = document.getElementById(id);
-			if (!el) continue;
-
-			const obs = new IntersectionObserver(
-				([entry]) => { if (entry.isIntersecting) activeId = id; },
-				{ rootMargin: '-5% 0px -55% 0px', threshold: 0 }
-			);
-			obs.observe(el);
-			observers.push(obs);
+			if (el) obs.observe(el);
 		}
 
-		return () => observers.forEach((obs) => obs.disconnect());
+		return () => obs.disconnect();
 	});
 </script>
 

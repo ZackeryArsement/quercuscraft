@@ -45,6 +45,6 @@
 		</h3>
 		<p class="mb-4 flex-1 text-sm text-stone-400">{build.description}</p>
 
-		<p class="text-xs text-stone-600">{build.date}</p>
+		<p class="text-xs text-stone-400">{build.date}</p>
 	</div>
 </a>
