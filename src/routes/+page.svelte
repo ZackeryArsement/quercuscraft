@@ -5,6 +5,7 @@
 	import FeaturedBuilds from '$lib/components/FeaturedBuilds.svelte';
 	import LatestPosts from '$lib/components/LatestPosts.svelte';
 	import QuickLinks from '$lib/components/landingPage/QuickLinks.svelte';
+	import DonationSection from '$lib/components/landingPage/DonationSection.svelte';
 	import AffiliatesSection from '$lib/components/landingPage/AffiliatesSection.svelte';
 
 	/*const affiliates: Affiliate[] = [
@@ -26,12 +27,12 @@
 
 	const latestPosts: PostCard[] = [
 		{
-			title: 'How I Build Organic Tree Canopies',
-			type: 'Tutorial',
-			date: 'Feb 18, 2026',
-			excerpt: 'A step-by-step breakdown of my leaf placement technique for making trees look natural at any scale.',
-			href: '/tutorials/organic-tree-canopies'
-		},
+			title: 'Etho Hour',
+			type: 'Technical',
+			date: 'Dec 23, 2025',
+			excerpt: 'An extensive proposal for standardizing time in Minecraft',
+			href: '/blog/etho-hour'
+		}/*,
 		{
 			title: 'Iron District — Full World Download',
 			type: 'World Download',
@@ -52,7 +53,7 @@
 			date: 'Jan 15, 2026',
 			excerpt: 'Which stone variants to use together, which to avoid, and how to add depth without noise.',
 			href: '/tutorials/stone-palettes'
-		}
+		}*/
 	];
 </script>
 
@@ -61,3 +62,4 @@
 <LatestPosts posts={latestPosts} />
 <!-- <AffiliatesSection {affiliates} /> -->
 <QuickLinks />
+<DonationSection />

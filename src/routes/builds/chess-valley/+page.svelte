@@ -2,18 +2,20 @@
 	import PostLayout from '$lib/components/posts/PostLayout.svelte';
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
+	import { builds } from '$lib/data/builds';
+	const build = builds.find(b => b.href === '/builds/chess-valley')!;
 
 	// ── Images ───────────────────────────────────────────────────────────────
-	import heroImg         from '$lib/assets/worldPages/chessValley/FULLBOARD.webp';
-	import fullBuildImg    from '$lib/assets/worldPages/chessValley/FULL_BUILD.webp';
-	import manualImg       from '$lib/assets/worldPages/chessValley/MANUAL.webp';
-	import pawnImg         from '$lib/assets/worldPages/chessValley/PAWN.webp';
-	import billboardImg    from '$lib/assets/worldPages/chessValley/CHESS_BILLBOARD.webp';
-	import activeOnImg     from '$lib/assets/worldPages/chessValley/ACTIVE_ON.webp';
-	import activeOffImg    from '$lib/assets/worldPages/chessValley/ACTIVE_OFF.webp';
-	import graveyardImg    from '$lib/assets/worldPages/chessValley/GRAVEYARD.webp';
-	import graveyardExImg  from '$lib/assets/worldPages/chessValley/GRAVEYARD_EX.webp';
-	import promotionsImg   from '$lib/assets/worldPages/chessValley/PROMOTIONS.webp';
+	import heroImg         from '$lib/assets/posts/worldPages/chessValley/FULLBOARD.webp';
+	import fullBuildImg    from '$lib/assets/posts/worldPages/chessValley/FULL_BUILD.webp';
+	import manualImg       from '$lib/assets/posts/worldPages/chessValley/MANUAL.webp';
+	import pawnImg         from '$lib/assets/posts/worldPages/chessValley/PAWN.webp';
+	import billboardImg    from '$lib/assets/posts/worldPages/chessValley/CHESS_BILLBOARD.webp';
+	import activeOnImg     from '$lib/assets/posts/worldPages/chessValley/ACTIVE_ON.webp';
+	import activeOffImg    from '$lib/assets/posts/worldPages/chessValley/ACTIVE_OFF.webp';
+	import graveyardImg    from '$lib/assets/posts/worldPages/chessValley/GRAVEYARD.webp';
+	import graveyardExImg  from '$lib/assets/posts/worldPages/chessValley/GRAVEYARD_EX.webp';
+	import promotionsImg   from '$lib/assets/posts/worldPages/chessValley/PROMOTIONS.webp';
 
 	// ── Sidebar nav ──────────────────────────────────────────────────────────
 	const navSections: NavSection[] = [
@@ -46,6 +48,7 @@
 	heroSrc={heroImg}
 	heroAlt="Aerial view of Chess Valley — a fully functional chess board inside a sculpted Minecraft valley"
 	{navSections}
+	youtubeUrl={build.youtubeUrl}
 >
 
 	<!-- ── Introduction ──────────────────────────────────────────────────── -->

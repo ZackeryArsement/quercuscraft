@@ -2,25 +2,27 @@
 	import PostLayout from '$lib/components/posts/PostLayout.svelte';
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
+	import { builds } from '$lib/data/builds';
+	const build = builds.find(b => b.href === '/builds/bamboo-comparisons')!;
 
 	// ── Images ───────────────────────────────────────────────────────────────
-	import heroImg            from '$lib/assets/worldPages/bambooComparison/BRICK_DETECTOR.webp';
-	import prelimImg          from '$lib/assets/worldPages/bambooComparison/PrelimBambooTest.webp';
-	import bambooPerTickImg   from '$lib/assets/worldPages/bambooComparison/BambooPerTick.webp';
-	import singleFlyingImg    from '$lib/assets/worldPages/bambooComparison/SINGLE_CHUNK_FLYING.webp';
-	import threeFlyingImg     from '$lib/assets/worldPages/bambooComparison/THREE_CHUNK_FLYING.webp';
-	import originalFarmImg    from '$lib/assets/worldPages/bambooComparison/ORIGINAL_FARM.webp';
-	import altFarmImg         from '$lib/assets/worldPages/bambooComparison/ALTERNATING_FARM.webp';
-	import topTimedImg        from '$lib/assets/worldPages/bambooComparison/TOP_TIMED.webp';
-	import sideTimedImg       from '$lib/assets/worldPages/bambooComparison/SIDE_TIMED.webp';
-	import threeTimedImg      from '$lib/assets/worldPages/bambooComparison/THREE_TIMED.webp';
-	import topDetectorImg     from '$lib/assets/worldPages/bambooComparison/TOP_DETECTOR.webp';
-	import sideDetectorImg    from '$lib/assets/worldPages/bambooComparison/SIDE_DETECTOR.webp';
-	import oneChunkTotalImg   from '$lib/assets/worldPages/bambooComparison/1ChunkTotal.webp';
-	import threeChunkTotalImg from '$lib/assets/worldPages/bambooComparison/3ChunkTotal.webp';
-	import perTileImg         from '$lib/assets/worldPages/bambooComparison/PerTile.webp';
-	import totalBambooImg     from '$lib/assets/worldPages/bambooComparison/TotalBamboo.webp';
-	import totalBambooSpecImg from '$lib/assets/worldPages/bambooComparison/TotalBambooSpecifics.webp';
+	import heroImg            from '$lib/assets/posts/worldPages/bambooComparison/BRICK_DETECTOR.webp';
+	import prelimImg          from '$lib/assets/posts/worldPages/bambooComparison/PrelimBambooTest.webp';
+	import bambooPerTickImg   from '$lib/assets/posts/worldPages/bambooComparison/BambooPerTick.webp';
+	import singleFlyingImg    from '$lib/assets/posts/worldPages/bambooComparison/SINGLE_CHUNK_FLYING.webp';
+	import threeFlyingImg     from '$lib/assets/posts/worldPages/bambooComparison/THREE_CHUNK_FLYING.webp';
+	import originalFarmImg    from '$lib/assets/posts/worldPages/bambooComparison/ORIGINAL_FARM.webp';
+	import altFarmImg         from '$lib/assets/posts/worldPages/bambooComparison/ALTERNATING_FARM.webp';
+	import topTimedImg        from '$lib/assets/posts/worldPages/bambooComparison/TOP_TIMED.webp';
+	import sideTimedImg       from '$lib/assets/posts/worldPages/bambooComparison/SIDE_TIMED.webp';
+	import threeTimedImg      from '$lib/assets/posts/worldPages/bambooComparison/THREE_TIMED.webp';
+	import topDetectorImg     from '$lib/assets/posts/worldPages/bambooComparison/TOP_DETECTOR.webp';
+	import sideDetectorImg    from '$lib/assets/posts/worldPages/bambooComparison/SIDE_DETECTOR.webp';
+	import oneChunkTotalImg   from '$lib/assets/posts/worldPages/bambooComparison/1ChunkTotal.webp';
+	import threeChunkTotalImg from '$lib/assets/posts/worldPages/bambooComparison/3ChunkTotal.webp';
+	import perTileImg         from '$lib/assets/posts/worldPages/bambooComparison/PerTile.webp';
+	import totalBambooImg     from '$lib/assets/posts/worldPages/bambooComparison/TotalBamboo.webp';
+	import totalBambooSpecImg from '$lib/assets/posts/worldPages/bambooComparison/TotalBambooSpecifics.webp';
 
 	// ── Sidebar nav ──────────────────────────────────────────────────────────
 	const navSections: NavSection[] = [
@@ -52,6 +54,7 @@
 	heroSrc={heroImg}
 	heroAlt="The detector rail bamboo farm — the most resource-efficient design in this comparison"
 	{navSections}
+	youtubeUrl={build.youtubeUrl}
 >
 
 	<!-- ── Introduction ──────────────────────────────────────────────────── -->
@@ -458,6 +461,7 @@
 	<!-- ── World Download ────────────────────────────────────────────────── -->
 	<WorldDownloadFooter
 		worldName="Bamboo Comparisons"
+		downloadUrl="https://pub-34f93473d6854fe28e01e96e6aacea21.r2.dev/Bamboo Testing.zip"
 		minecraftVersion="1.21.10"
 		notes="The full comparison world — all five bamboo farm designs built side by side in a controlled test environment. Run your own numbers, tweak the designs, or use it as a reference when planning your own farm."
 	/>
