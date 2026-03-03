@@ -347,6 +347,7 @@
 	<!-- ── World Download ────────────────────────────────────────────────── -->
 	<WorldDownloadFooter
 		worldName="Chess Valley"
+		downloadUrl="https://pub-34f93473d6854fe28e01e96e6aacea21.r2.dev/Quercus_Chess.zip"
 		minecraftVersion="1.21.10"
 		notes="The complete Chess Valley world save — functional chess engine, sculpted valley, in-world manual, and all six hidden pieces included. No mods or resource packs required. Pure vanilla."
 	/>

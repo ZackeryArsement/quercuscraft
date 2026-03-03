@@ -69,7 +69,7 @@
 				>
 					{#if tier.featured}
 						<span
-							class="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-600 px-4 py-0.5 text-xs font-bold tracking-wider text-white uppercase"
+							class="absolute -top-3 left-1/2 -translate-x-1/2 bg-green-700 px-4 py-0.5 text-xs font-bold tracking-wider text-white uppercase"
 						>
 							Most Popular
 						</span>
