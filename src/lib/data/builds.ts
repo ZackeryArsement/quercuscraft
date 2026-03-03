@@ -10,7 +10,8 @@ export const builds: BuildCard[] = [
 		href: '/builds/chess-valley',
 		featured: true,
 		image: 'CHESS_SHOWCASE.webp',
-		alt: 'Ground view of Chess Valley highlighting a pawn on the chess board'
+		alt: 'Ground view of Chess Valley highlighting a pawn on the chess board',
+		youtubeUrl: 'https://www.youtube.com/watch?v=Q_N5OvFtnvw'
 	},
 	{
 		title: 'Detector Rail Bamboo Farm',
@@ -21,7 +22,8 @@ export const builds: BuildCard[] = [
 		href: '/builds/detector-bamboo-farm',
 		featured: true,
 		image: 'DETECTOR_RAIL_FARM.webp',
-		alt: 'Minecart actively harvesting bamboo in original bamboo farm'
+		alt: 'Minecart actively harvesting bamboo in original bamboo farm',
+		youtubeUrl: 'https://www.youtube.com/watch?v=WUqqw2ixf5M&t=56s'
 	},
 	{
 		title: 'Bamboo Comparisons',
@@ -32,6 +34,7 @@ export const builds: BuildCard[] = [
 		href: '/builds/bamboo-comparisons',
 		featured: true,
 		image: 'BAMBOO_COMPARISON.webp',
-		alt: 'Close up of Minecraft Panda eating a bamboo shoot'
+		alt: 'Close up of Minecraft Panda eating a bamboo shoot',
+		youtubeUrl: 'https://www.youtube.com/watch?v=16LjyiLmYjQ'
 	}
 ];

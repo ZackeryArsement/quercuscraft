@@ -13,15 +13,15 @@
 				<p class="mb-1 text-xs font-semibold tracking-widest text-green-400 uppercase">Recent</p>
 				<h2 class="text-2xl font-bold text-white">Latest Posts</h2>
 			</div>
-			<!-- <a href="/blog" class="text-sm text-stone-400 transition-colors hover:text-green-400">
+			<a href="/blog" class="text-sm text-stone-400 transition-colors hover:text-green-400">
 				All posts →
-			</a> -->
+			</a>
 		</div>
 
 		<div class="grid gap-4 sm:grid-cols-2">
-			<!-- {#each posts as post}
+			{#each posts as post}
 				<PostCardComponent {post} />
-			{/each} -->
+			{/each}
 		</div>
 	</div>
 </section>

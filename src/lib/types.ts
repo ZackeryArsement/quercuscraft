@@ -8,6 +8,19 @@ export interface BuildCard {
 	featured?: boolean;
 	image?: string; // filename in src/lib/assets/buildThumbnail/, e.g. 'CHESS_SHOWCASE.png'
 	alt?: string;   // alt text for the image
+	youtubeUrl?: string;
+}
+
+export interface BlogPost {
+	title: string;
+	category: string;
+	date: string;
+	excerpt: string;
+	tags: string[];
+	href: string;
+	image?: string; // filename in src/lib/assets/blogThumbnails/
+	alt?: string;
+	youtubeUrl?: string;
 }
 
 export interface PostCard {

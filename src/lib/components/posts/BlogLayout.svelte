@@ -2,27 +2,23 @@
 	import type { Snippet } from 'svelte';
 	import { onMount } from 'svelte';
 
-	export interface NavSub {
-		id: string;
-		label: string;
-	}
-
 	export interface NavSection {
 		id: string;
 		label: string;
-		sub?: NavSub[];
+		sub?: { id: string; label: string }[];
 	}
 
 	interface Props {
 		title: string;
-		heroSrc: string;
-		heroAlt?: string;
+		category: string;
+		date: string;
+		tags?: string[];
 		navSections: NavSection[];
 		youtubeUrl?: string;
 		children: Snippet;
 	}
 
-	let { title, heroSrc, heroAlt = '', navSections, youtubeUrl, children }: Props = $props();
+	let { title, category, date, tags = [], navSections, youtubeUrl, children }: Props = $props();
 
 	let activeId = $state('');
 	let videoOpen = $state(false);
@@ -45,9 +41,7 @@
 			if (!el) continue;
 
 			const obs = new IntersectionObserver(
-				([entry]) => {
-					if (entry.isIntersecting) activeId = id;
-				},
+				([entry]) => { if (entry.isIntersecting) activeId = id; },
 				{ rootMargin: '-5% 0px -55% 0px', threshold: 0 }
 			);
 			obs.observe(el);
@@ -59,45 +53,36 @@
 </script>
 
 <article style="background: radial-gradient(ellipse 120% 80% at 50% 50%, #111711 0%, #0d0d0d 45%, #080808 100%); background-attachment: fixed;">
-	<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
-	<div class="relative h-[65vh] min-h-[420px] overflow-hidden">
-		<img
-			src={heroSrc}
-			alt={heroAlt}
-			class="absolute inset-0 h-full w-full object-cover"
-		/>
-		<div
-			class="absolute inset-0"
-			style="background: linear-gradient(to top, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.1) 100%)"
-			aria-hidden="true"
-		></div>
 
-		<!-- Bottom bar: title left, buttons right -->
-		<div class="absolute right-0 bottom-0 left-0 pb-10">
-		<div class="mx-auto flex max-w-6xl items-end justify-between gap-4 px-10">
-			<h1 class="max-w-2xl text-5xl font-bold leading-tight text-white drop-shadow-lg lg:text-6xl">
+	<!-- ── Header ────────────────────────────────────────────────────────────── -->
+	<div class="border-b-4 border-green-900" style="background: linear-gradient(160deg, #0c120c 0%, #111a11 40%, #090c09 100%);">
+		<div class="mx-auto max-w-6xl px-10 py-20">
+			<p class="mb-4 text-xs font-semibold tracking-widest text-green-600 uppercase">
+				{category} &nbsp;·&nbsp; {date}
+			</p>
+			<h1 class="mb-6 max-w-3xl text-5xl font-bold leading-tight text-white lg:text-6xl">
 				{title}
 			</h1>
-			<div class="flex shrink-0 items-center gap-3">
+			<div class="flex flex-wrap items-center gap-3">
+				{#if tags.length > 0}
+					{#each tags as tag}
+						<span class="border border-stone-700 bg-stone-900 px-3 py-1 text-xs font-medium text-stone-400">
+							{tag}
+						</span>
+					{/each}
+				{/if}
 				{#if youtubeUrl}
 					<button
 						onclick={() => (videoOpen = !videoOpen)}
-						class="flex items-center gap-2 border-2 border-stone-500 bg-stone-900/60 px-6 py-3 text-sm font-semibold text-stone-300 backdrop-blur-sm transition-colors hover:border-stone-300 hover:text-white"
+						class="flex items-center gap-2 border border-stone-600 bg-stone-900 px-4 py-1.5 text-xs font-semibold text-stone-300 transition-colors hover:border-stone-400 hover:text-white"
 					>
-						<svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+						<svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 							<path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
 						</svg>
 						{videoOpen ? 'Hide Video' : 'Watch on YouTube'}
 					</button>
 				{/if}
-				<a
-					href="#download"
-					class="shrink-0 border-2 border-green-600 bg-green-900/60 px-6 py-3 text-sm font-semibold text-green-300 backdrop-blur-sm transition-colors hover:bg-green-700 hover:text-white"
-				>
-					Go To Download ↓
-				</a>
 			</div>
-		</div>
 		</div>
 	</div>
 
@@ -127,16 +112,13 @@
 				class="sticky top-16 flex h-[calc(100vh-4rem)] flex-col overflow-y-auto border-r border-stone-800 px-5 py-8"
 				aria-label="Post sections"
 			>
-				<p class="mb-5 text-m font-semibold tracking-widest text-green-600 uppercase">
-					Contents
-				</p>
+				<p class="mb-5 text-m font-semibold tracking-widest text-green-600 uppercase">Contents</p>
 
 				<ul class="space-y-0.5">
 					{#each navSections as section}
 						<li>
 							<button
-								class="w-full border-l-2 py-1.5 pr-2 pl-3 text-left text-m transition-colors {activeId ===
-								section.id
+								class="w-full border-l-2 py-1.5 pr-2 pl-3 text-left text-m transition-colors {activeId === section.id
 									? 'border-green-500 text-green-400'
 									: 'border-stone-700 text-stone-500 hover:border-stone-500 hover:text-stone-300'}"
 								onclick={() => document.getElementById(section.id)?.scrollIntoView({ behavior: 'smooth' })}
@@ -149,10 +131,9 @@
 									{#each section.sub as sub}
 										<li>
 											<button
-												class="w-full border-l-2 py-1 pr-2 pl-6 text-left text-xs transition-colors {activeId ===
-												sub.id
+												class="w-full border-l-2 py-1 pr-2 pl-6 text-left text-sm transition-colors {activeId === sub.id
 													? 'border-green-500 text-green-400'
-													: 'border-stone-800 text-stone-600 hover:border-stone-600 hover:text-stone-400'}"
+													: 'border-stone-700 text-stone-500 hover:border-stone-500 hover:text-stone-300'}"
 												onclick={() => document.getElementById(sub.id)?.scrollIntoView({ behavior: 'smooth' })}
 											>
 												{sub.label}
@@ -168,8 +149,8 @@
 		</aside>
 
 		<!-- Main content -->
-		<main class="min-w-0 flex-1">
+		<div class="min-w-0 flex-1">
 			{@render children()}
-		</main>
+		</div>
 	</div>
 </article>

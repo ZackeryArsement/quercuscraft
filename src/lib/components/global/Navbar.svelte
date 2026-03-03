@@ -51,16 +51,16 @@
 						{ label: 'Full Worlds', href: '/builds', description: 'Complete world saves' }/*,
 						{ label: 'Schematics', href: '/downloads/schematics', description: 'Individual structures' }*/
 					]
-				}/*,
+				},
 				{
 					title: 'Resources',
 					links: [
-						{ label: 'Resource Packs', href: '/downloads/resource-packs' },
-						{ label: 'Data Packs', href: '/downloads/data-packs' }
+						// { label: 'Resource Packs', href: '/downloads/resource-packs' },
+						{ label: 'Mods', href: '/downloads/mods' }
 					]
-				}*/
+				}
 			]
-		}/*,
+		},
 		{
 			id: 'blog',
 			label: 'Blog',
@@ -68,14 +68,14 @@
 				{
 					title: 'Posts',
 					links: [
-						{ label: 'All Posts', href: '/blog', description: 'Browse every article' },
+						{ label: 'All Posts', href: '/blog', description: 'Browse every article' }/*,
 						{ label: 'News & Updates', href: '/blog/news', description: 'Project announcements' },
 						{ label: 'Timelapses', href: '/blog/timelapses', description: 'Watch builds come to life' },
-						{ label: 'Behind the Scenes', href: '/blog/bts', description: 'Process and planning' }
+						{ label: 'Behind the Scenes', href: '/blog/bts', description: 'Process and planning' }*/
 					]
 				}
 			]
-		}*/
+		}
 	];
 
 	let activeMenu = $state<string | null>(null);

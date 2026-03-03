@@ -30,7 +30,7 @@
 		</p>
 		<h1 class="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-8xl">
 			Welcome to<br />
-			<span class="text-green-400">QuercusCraft</span>
+			<span class="text-green-500">QuercusCraft</span>
 		</h1>
 		<p class="mx-auto mb-10 max-w-xl text-xl text-stone-400">
 			A showcase of original VANILLA Minecraft builds — from technical anysis to complex redstone games.
@@ -44,10 +44,10 @@
 				Browse Builds
 			</a>
 			<a
-				href="/tutorials"
+				href="/blog"
 				class="rounded-md border border-stone-600 px-6 py-3 text-sm font-semibold text-stone-200 transition-colors hover:border-stone-400 hover:text-white"
 			>
-				View Tutorials
+				View Blogs
 			</a>
 		</div>
 	</div>

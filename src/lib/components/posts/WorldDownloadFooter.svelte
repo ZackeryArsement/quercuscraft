@@ -10,26 +10,26 @@
 		},
 		{
 			label: 'Supporter',
-			price: '$0.99',
+			price: '$1.99',
 			period: '/ month',
 			benefit: 'Your name credited at the end of all related YouTube videos.',
-			url: undefined as string | undefined, // TODO: Patreon monthly tier link
+			url: 'https://www.patreon.com/cw/QuercusCraft' as string | undefined,
 			featured: false
 		},
 		{
 			label: 'Patron',
-			price: '$2.99',
-			period: 'one-time',
+			price: '$4.99',
+			period: '/ month',
 			benefit: 'A named sign placed inside future world downloads as a permanent thank-you.',
-			url: undefined as string | undefined, // TODO: Stripe payment link
+			url: 'https://www.patreon.com/cw/QuercusCraft' as string | undefined,
 			featured: true
 		},
 		{
 			label: 'Champion',
 			price: '$9.99',
-			period: 'one-time',
-			benefit: 'A custom statue of your Minecraft character built into future world downloads.',
-			url: undefined as string | undefined, // TODO: Stripe payment link
+			period: '/ month',
+			benefit: 'A small statue or named mob in your honor built into future world downloads.',
+			url: 'https://www.patreon.com/cw/QuercusCraft' as string | undefined,
 			featured: false
 		}
 	];
@@ -49,7 +49,7 @@
 <section id="download" class="border-t-4 border-green-900 bg-stone-900 px-10 py-16">
 
 	<!-- ── Donations ─────────────────────────────────────────────────────── -->
-	<div class="mb-16 border-b border-stone-700 pb-16">
+	<div class="mb-12 border-b border-stone-700 pb-16">
 		<p class="mb-2 text-xs font-semibold tracking-widest text-stone-500 uppercase">
 			Support the Creator
 		</p>
@@ -62,7 +62,7 @@
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
 			{#each DONATION_TIERS as tier}
 				<div
-					class="relative flex flex-col border p-7 {tier.featured
+					class="relative flex flex-col border p-3 sm:p-4 xl:p-7 {tier.featured
 						? 'border-green-600 bg-stone-800'
 						: 'border-stone-700'}"
 					style={tier.featured ? '' : 'background-color: #1a1917;'}
@@ -75,23 +75,23 @@
 						</span>
 					{/if}
 
-					<p class="mb-5 text-xs font-semibold tracking-widest text-stone-500 uppercase">
+					<p class="mb-2 xl:mb-5 text-xs font-semibold tracking-widest text-stone-500 uppercase">
 						{tier.label}
 					</p>
 
-					<div class="mb-5 flex items-baseline gap-1">
-						<span class="text-4xl font-bold text-white">{tier.price}</span>
+					<div class="mb-2 xl:mb-5 flex items-baseline gap-1">
+						<span class="text-2xl sm:text-3xl xl:text-4xl font-bold text-white">{tier.price}</span>
 						{#if tier.period}
-							<span class="text-sm text-stone-500">{tier.period}</span>
+							<span class="text-xs xl:text-sm text-stone-500">{tier.period}</span>
 						{/if}
 					</div>
 
-					<p class="mb-8 flex-1 leading-relaxed text-stone-400">{tier.benefit}</p>
+					<p class="mb-3 xl:mb-8 flex-1 text-xs sm:text-sm xl:text-base leading-relaxed text-stone-400">{tier.benefit}</p>
 
 					{#if tier.url}
 						<a
 							href={tier.url}
-							class="block text-center py-3 px-4 text-sm font-bold transition-colors {tier.featured
+							class="block text-center py-1.5 px-2 xl:py-3 xl:px-4 text-xs xl:text-sm font-bold transition-colors {tier.featured
 								? 'border-2 border-green-600 bg-green-900 text-green-300 hover:bg-green-700 hover:text-white'
 								: 'border-2 border-stone-600 bg-stone-900 text-stone-300 hover:border-stone-400 hover:text-white'}"
 							target="_blank"
@@ -101,7 +101,7 @@
 						</a>
 					{:else}
 						<span
-							class="block cursor-default text-center py-3 px-4 text-sm font-bold border-2 border-stone-700 text-stone-600"
+							class="block cursor-default text-center py-1.5 px-2 xl:py-3 xl:px-4 text-xs xl:text-sm font-bold border-2 border-stone-700 text-stone-600"
 						>
 							{tier.price === 'Free' ? 'Already Free ↑' : 'Coming Soon'}
 						</span>
@@ -146,10 +146,13 @@
 	{/if}
 
 	<a
-		href={downloadUrl ?? '#'}
+		href={downloadUrl}
+		download
+		target="_blank"
+		rel="noopener noreferrer"
 		class="inline-block border-2 border-green-600 bg-green-900 px-10 py-4 text-base font-bold text-green-300 transition-colors hover:bg-green-700 hover:text-white"
-		target={downloadUrl ? '_blank' : undefined}
-		rel={downloadUrl ? 'noopener noreferrer' : undefined}
+		// target={downloadUrl ? '_blank' : undefined}
+		// rel={downloadUrl ? 'noopener noreferrer' : undefined}
 	>
 		⬇&nbsp; Download World
 	</a>

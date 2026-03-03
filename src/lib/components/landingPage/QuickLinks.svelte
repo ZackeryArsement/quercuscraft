@@ -27,14 +27,14 @@
 			</a>
 
 			<a
-				href="/"
+				href="/blog"
 				class="group flex flex-col gap-3 rounded-xl border border-stone-800 bg-stone-900 p-6 transition-colors hover:border-stone-600 hover:bg-stone-800"
 			>
 				<span class="text-2xl" aria-hidden="true">✍️</span>
-				<h3 class="font-semibold text-white">Blog</h3>
+				<h3 class="font-semibold text-white">Blogs</h3>
 				<p class="text-sm text-stone-400">Project updates, timelapses, and behind-the-scenes posts.</p>
 				<span class="mt-auto text-sm text-stone-400 transition-colors group-hover:text-stone-300">
-					Coming soon!<!--Read the blog → -->
+					Read the blog →
 				</span>
 			</a>
 		</div>
