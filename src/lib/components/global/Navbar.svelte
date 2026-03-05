@@ -145,20 +145,20 @@
 					</button>
 				{/each}
 
-				<!--<a
+				<!-- <a
 					href="/affiliates"
 					class="rounded-md px-4 py-2 text-sm font-medium text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
 					onmouseenter={() => (activeMenu = null)}
 				>
 					Affiliates
-				</a>
+				</a> -->
 				<a
 					href="/about"
 					class="rounded-md px-4 py-2 text-sm font-medium text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
 					onmouseenter={() => (activeMenu = null)}
 				>
 					About
-				</a>-->
+				</a>
 			</div>
 
 			<!-- Mobile hamburger -->
