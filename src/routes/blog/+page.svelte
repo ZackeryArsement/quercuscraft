@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { posts } from '$lib/data/posts';
 	import type { BlogPost } from '$lib/types';
+	import Seo from '$lib/components/global/Seo.svelte';
 
 	const thumbnails = import.meta.glob<{ default: string }>(
 		'../../lib/assets/posts/postThumbnail/*.{webp,png,jpg}',
@@ -59,10 +60,12 @@
 	const hasFilters = $derived(selectedTags.length > 0);
 </script>
 
-<svelte:head>
-	<title>Blog — QuercusCraft</title>
-	<meta name="description" content="In-depth analysis, experiments, and findings from the world of Minecraft technical play." />
-</svelte:head>
+<Seo
+	title="Blog — QuercusCraft"
+	description="In-depth analysis, experiments, and findings from the world of Minecraft technical play."
+	path="/blog"
+	type="website"
+/>
 
 <div class="min-h-screen bg-stone-950">
 
@@ -128,7 +131,7 @@
 	<!-- ── Post cards ─────────────────────────────────────────────────────── -->
 	<div class="mx-8 sm:mx-12 lg:mx-16">
 		<div class="divide-y-4 divide-green-900 border-x-4 border-b-4 border-green-900">
-			{#each filteredPosts as post}
+			{#each filteredPosts as post, i (post.href)}
 				{@const thumb = getThumbnail(post.image)}
 				<a
 					href={post.href}
@@ -137,9 +140,15 @@
 					<!-- Left: image (1/3) -->
 					<div class="relative w-1/3 shrink-0 overflow-hidden border-r-4 border-green-900">
 						{#if thumb}
+							<!-- Only the first card is above the fold; the rest defer. -->
 							<img
 								src={thumb}
 								alt={post.alt ?? post.title}
+								loading={i === 0 ? 'eager' : 'lazy'}
+								fetchpriority={i === 0 ? 'high' : 'auto'}
+								decoding="async"
+								width="400"
+								height="192"
 								class="h-full w-full object-cover"
 							/>
 							<div

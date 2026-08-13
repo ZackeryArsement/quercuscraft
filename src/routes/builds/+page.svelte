@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { builds } from '$lib/data/builds';
 	import { getBuildThumbnail } from '$lib/thumbnails';
+	import Seo from '$lib/components/global/Seo.svelte';
 
 	// ── Filter state ──────────────────────────────────────────────────────────
 	type SortKey = 'date-desc' | 'date-asc' | 'name-asc' | 'name-desc';
@@ -77,9 +78,12 @@
 	];
 </script>
 
-<svelte:head>
-	<title>All Builds — QuercusCraft</title>
-</svelte:head>
+<Seo
+	title="All Builds — QuercusCraft"
+	description="Every QuercusCraft build in one place — playable vanilla Minecraft maps and technical farms, each with a free world download. No mods, no plugins."
+	path="/builds"
+	type="website"
+/>
 
 <div class="bg-black py-12">
 	<!-- Page header -->

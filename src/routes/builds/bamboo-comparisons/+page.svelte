@@ -1,9 +1,63 @@
 <script lang="ts">
 	import PostLayout from '$lib/components/posts/PostLayout.svelte';
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
+	import GlossaryTerm from '$lib/components/GlossaryTerm.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
 	import { builds } from '$lib/data/builds';
+	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
 	const build = builds.find(b => b.href === '/builds/bamboo-comparisons')!;
+
+	// ── SEO ──────────────────────────────────────────────────────────────────
+	const PATH = '/builds/bamboo-comparisons';
+	const SEO_DESCRIPTION =
+		'Which Minecraft bamboo farm is fastest? Five vanilla Java designs tested head to head — flying machine, timed piston and detector rail — with real rates.';
+
+	const videoId = youTubeId(build.youtubeUrl);
+
+	const bambooLd: Record<string, unknown>[] = [
+		{
+			'@context': 'https://schema.org',
+			'@type': 'CreativeWork',
+			'@id': `${SITE_URL}${PATH}#build`,
+			name: 'Minecraft Bamboo Farm Comparison — Java Edition',
+			alternateName: 'Fastest Bamboo Farm in Minecraft',
+			headline: 'Which Minecraft Bamboo Farm Is Fastest? Five Designs Tested',
+			description: SEO_DESCRIPTION,
+			url: abs(PATH),
+			image: abs('/og/bamboo-comparisons.jpg'),
+			inLanguage: 'en',
+			genre: ['Minecraft', 'Redstone', 'Farm'],
+			about: [
+				{ '@type': 'Thing', name: 'Minecraft' },
+				{ '@type': 'Thing', name: 'Bamboo' },
+				{ '@type': 'VideoGame', name: 'Minecraft' }
+			],
+			keywords:
+				'minecraft bamboo farm, flying machine bamboo farm, java bamboo farm, fastest bamboo farm, bamboo farm tutorial, bamboo java tutorial, best bamboo farm minecraft, tileable bamboo farm, minecraft bamboo',
+			isAccessibleForFree: true,
+			author: publisher,
+			publisher
+		},
+		breadcrumbs([
+			{ name: 'Home', path: '/' },
+			{ name: 'Builds', path: '/builds' },
+			{ name: 'Bamboo Comparisons', path: PATH }
+		])
+	];
+
+	if (videoId && build.videoUploadDate) {
+		bambooLd.push({
+			'@context': 'https://schema.org',
+			'@type': 'VideoObject',
+			name: "I Tested Every Bamboo Farm in Minecraft So You Don't Have To",
+			description: SEO_DESCRIPTION,
+			thumbnailUrl: [youTubeThumb(videoId)],
+			uploadDate: build.videoUploadDate,
+			embedUrl: youTubeEmbed(videoId),
+			contentUrl: build.youtubeUrl,
+			publisher
+		});
+	}
 
 	// ── Images ───────────────────────────────────────────────────────────────
 	import heroImg            from '$lib/assets/posts/worldPages/bambooComparison/BRICK_DETECTOR.webp';
@@ -23,6 +77,7 @@
 	import perTileImg         from '$lib/assets/posts/worldPages/bambooComparison/PerTile.webp';
 	import totalBambooImg     from '$lib/assets/posts/worldPages/bambooComparison/TotalBamboo.webp';
 	import totalBambooSpecImg from '$lib/assets/posts/worldPages/bambooComparison/TotalBambooSpecifics.webp';
+	import Seo from '$lib/components/global/Seo.svelte';
 
 	// ── Sidebar nav ──────────────────────────────────────────────────────────
 	const navSections: NavSection[] = [
@@ -44,10 +99,26 @@
 	];
 </script>
 
-<svelte:head>
-	<title>Bamboo Comparisons — QuercusCraft</title>
-	<meta name="description" content="A head-to-head comparison of five bamboo farm designs in vanilla Minecraft — including two original farms never documented before — measuring lag, output, and resource efficiency." />
-</svelte:head>
+<Seo
+	title="Fastest Minecraft Bamboo Farm — 5 Java Designs Tested (Vanilla)"
+	description={SEO_DESCRIPTION}
+	path={PATH}
+	image="/og/bamboo-comparisons.jpg"
+	imageAlt="A single-chunk flying machine bamboo farm running in vanilla Minecraft Java Edition"
+	type="article"
+	keywords={[
+		'minecraft bamboo farm',
+		'flying machine bamboo farm',
+		'java bamboo farm',
+		'fastest bamboo farm',
+		'best bamboo farm minecraft',
+		'bamboo farm tutorial',
+		'bamboo java tutorial',
+		'tileable bamboo farm',
+		'minecraft bamboo'
+	]}
+	jsonLd={bambooLd}
+/>
 
 <PostLayout
 	title="Bamboo Comparisons"
@@ -65,7 +136,8 @@
 
 			<div class="space-y-5 text-2xl leading-relaxed text-stone-300">
 				<p>
-					I set out with a clear goal: find the most efficient bamboo farm in Minecraft —
+					I set out with a clear goal: find the most efficient
+					<GlossaryTerm slug="bamboo">bamboo</GlossaryTerm> farm in Minecraft —
 					not just by raw output, but by three factors that actually matter to a survival player.
 					Lag impact, bamboo output per volume used, and total resource cost.
 					Most comparisons you'll find online focus on a single metric and call it done.
@@ -94,7 +166,7 @@
 			</div>
 
 			<figure class="mx-auto mt-10 w-4/5">
-				<img
+				<img width="1920" height="1185" loading="lazy" decoding="async"
 					src={oneChunkTotalImg}
 					alt="The preliminary bamboo farm test setup used across all five comparison runs in a chunk"
 					class="w-full"
@@ -135,7 +207,7 @@
 			</div>
 
 			<figure class="mx-auto mt-10 w-4/5">
-				<img
+				<img width="1920" height="1190" loading="lazy" decoding="async"
 					src={bambooPerTickImg}
 					alt="Chart showing bamboo growth rate relative to random tick distribution in a chunk"
 					class="w-full"
@@ -174,7 +246,7 @@
 
 				<div class="mt-8 grid grid-cols-2 gap-4">
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={singleFlyingImg}
 							alt="Single-chunk flying machine bamboo farm"
 							class="w-full"
@@ -182,7 +254,7 @@
 						<figcaption class="mt-2 text-center text-xs text-stone-600">Single-chunk variant.</figcaption>
 					</figure>
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={threeFlyingImg}
 							alt="Three-chunk flying machine bamboo farm scaled up"
 							class="w-full"
@@ -222,7 +294,7 @@
 				</div>
 
 				<figure class="mx-auto mt-8 w-4/5">
-					<img
+					<img width="1920" height="1080" loading="lazy" decoding="async"
 						src={originalFarmImg}
 						alt="Original observer-piston bamboo farm design"
 						class="w-full"
@@ -257,7 +329,7 @@
 				</div>
 
 				<figure class="mx-auto mt-8 w-4/5">
-					<img
+					<img width="1920" height="1080" loading="lazy" decoding="async"
 						src={altFarmImg}
 						alt="Alternating observer-piston bamboo farm variant"
 						class="w-full"
@@ -304,7 +376,7 @@
 
 				<div class="mt-8 grid grid-cols-2 gap-4">
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={topTimedImg}
 							alt="Top-down view of the timed bamboo farm"
 							class="w-full"
@@ -312,7 +384,7 @@
 						<figcaption class="mt-2 text-center text-xs text-stone-600">Top view — the piston row and clock mechanism.</figcaption>
 					</figure>
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={sideTimedImg}
 							alt="Side view of the timed bamboo farm showing the piston sweep"
 							class="w-full"
@@ -322,7 +394,7 @@
 				</div>
 
 				<figure class="mx-auto mt-6 w-4/5">
-					<img
+					<img width="1920" height="1080" loading="lazy" decoding="async"
 						src={threeTimedImg}
 						alt="Three timed bamboo farm units tiled side by side"
 						class="w-full"
@@ -366,7 +438,7 @@
 
 				<div class="mt-8 grid grid-cols-2 gap-4">
 					<figure>
-						<img
+						<img width="1920" height="1080" loading="lazy" decoding="async"
 							src={topDetectorImg}
 							alt="Top-down view of the detector rail bamboo farm"
 							class="w-full"
@@ -374,7 +446,7 @@
 						<figcaption class="mt-2 text-center text-xs text-stone-600">Top view — the minecart track loop and bamboo grid.</figcaption>
 					</figure>
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={sideDetectorImg}
 							alt="Side view of the detector rail bamboo farm"
 							class="w-full"
@@ -418,7 +490,7 @@
 
 			<div class="mt-10 grid grid-cols-2 gap-4">
 				<figure>
-					<img
+					<img width="1920" height="1185" loading="lazy" decoding="async"
 						src={oneChunkTotalImg}
 						alt="Total bamboo output comparison across all five designs at one-chunk scale"
 						class="w-full"
@@ -426,7 +498,7 @@
 					<figcaption class="mt-2 text-center text-xs text-stone-600">One-chunk total output.</figcaption>
 				</figure>
 				<figure>
-					<img
+					<img width="900" height="556" loading="lazy" decoding="async"
 						src={threeChunkTotalImg}
 						alt="Total bamboo output comparison across all five designs at three-chunk scale"
 						class="w-full"
@@ -436,7 +508,7 @@
 			</div>
 
 			<figure class="mx-auto mt-8 w-4/5">
-				<img
+				<img width="1920" height="1173" loading="lazy" decoding="async"
 					src={perTileImg}
 					alt="Bamboo output per horizontal tile for all five farm designs"
 					class="w-full"

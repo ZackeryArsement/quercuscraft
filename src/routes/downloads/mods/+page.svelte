@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Seo from '$lib/components/global/Seo.svelte';
+
 	interface Mod {
 		id: string;
 		name: string;
@@ -32,7 +34,8 @@
 		const words = name.trim().split(/\s+/);
 		if (words.length === 1) return name.slice(0, 3).toUpperCase();
 		if (words.length === 2) return (words[0].slice(0, 2) + words[1][0]).toUpperCase();
-		return words.slice(0, 3).map(w => w[0]).toUpperCase();
+		// .map() yields string[] — it has to be joined before it can be upper-cased.
+		return words.slice(0, 3).map(w => w[0]).join('').toUpperCase();
 	}
 
 	const mods: Mod[] = [
@@ -151,10 +154,12 @@
 	];
 </script>
 
-<svelte:head>
-	<title>Mods — QuercusCraft</title>
-	<meta name="description" content="The full list of Fabric mods used across QuercusCraft builds — performance, visual, building, camera, and technical tools." />
-</svelte:head>
+<Seo
+	title="Mods — QuercusCraft"
+	description="The full list of Fabric mods used across QuercusCraft builds — performance, visual, building, camera, and technical tools."
+	path="/downloads/mods"
+	type="website"
+/>
 
 <div class="min-h-screen bg-stone-950">
 
@@ -270,7 +275,7 @@
 								class="block border border-stone-800 bg-stone-900"
 							>
 								{#if iconSrc}
-									<img src={iconSrc} alt="{mod.name} icon" class="h-36 w-full object-cover" />
+									<img loading="lazy" decoding="async" src={iconSrc} alt="{mod.name} icon" class="h-36 w-full object-cover" />
 								{:else}
 									<div class="flex h-36 w-full items-center justify-center">
 										<span class="font-mono text-4xl font-bold text-stone-700">{abbrev(mod.name)}</span>

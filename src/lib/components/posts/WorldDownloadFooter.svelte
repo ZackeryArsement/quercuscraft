@@ -145,16 +145,23 @@
 		</div>
 	{/if}
 
-	<a
-		href={downloadUrl}
-		download
-		target="_blank"
-		rel="noopener noreferrer"
-		class="inline-block border-2 border-green-600 bg-green-900 px-10 py-4 text-base font-bold text-green-300 transition-colors hover:bg-green-700 hover:text-white"
-		// target={downloadUrl ? '_blank' : undefined}
-		// rel={downloadUrl ? 'noopener noreferrer' : undefined}
-	>
-		⬇&nbsp; Download World
-	</a>
+	{#if downloadUrl}
+		<a
+			href={downloadUrl}
+			download
+			target="_blank"
+			rel="noopener noreferrer"
+			class="inline-block border-2 border-green-600 bg-green-900 px-10 py-4 text-base font-bold text-green-300 transition-colors hover:bg-green-700 hover:text-white"
+		>
+			⬇&nbsp; Download World
+		</a>
+	{:else}
+		<!-- No URL set yet — show an inert placeholder rather than a dead link. -->
+		<span
+			class="inline-block cursor-default border-2 border-stone-700 px-10 py-4 text-base font-bold text-stone-500"
+		>
+			⬇&nbsp; Download Coming Soon
+		</span>
+	{/if}
 
 </section>

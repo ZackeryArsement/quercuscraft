@@ -1,11 +1,66 @@
 <script lang="ts">
 	import PostLayout from '$lib/components/posts/PostLayout.svelte';
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
+	import GlossaryTerm from '$lib/components/GlossaryTerm.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
 	import { builds } from '$lib/data/builds';
+	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
 	const build = builds.find(b => b.href === '/builds/detector-bamboo-farm')!;
 
+	// ── SEO ──────────────────────────────────────────────────────────────────
+	const PATH = '/builds/detector-bamboo-farm';
+	const SEO_DESCRIPTION =
+		'A tileable Minecraft bamboo farm for Java 1.21.10+ — no observers, chunk-unload safe, 9,475 bamboo per hour in one chunk. Free world download.';
+
+	const videoId = youTubeId(build.youtubeUrl);
+
+	const farmLd: Record<string, unknown>[] = [
+		{
+			'@context': 'https://schema.org',
+			'@type': 'CreativeWork',
+			'@id': `${SITE_URL}${PATH}#build`,
+			name: 'Detector Rail Bamboo Farm — Minecraft Java',
+			alternateName: 'Minecraft Bamboo Farm',
+			headline: 'Tileable Minecraft Bamboo Farm — Java, No Observers, Chunk-Safe',
+			description: SEO_DESCRIPTION,
+			url: abs(PATH),
+			image: abs('/og/detector-bamboo-farm.jpg'),
+			inLanguage: 'en',
+			genre: ['Minecraft', 'Redstone', 'Farm'],
+			about: [
+				{ '@type': 'Thing', name: 'Minecraft' },
+				{ '@type': 'Thing', name: 'Bamboo' },
+				{ '@type': 'VideoGame', name: 'Minecraft' }
+			],
+			keywords:
+				'minecraft bamboo farm, java bamboo farm, bamboo farm tutorial, bamboo java tutorial, tileable bamboo farm, detector rail bamboo farm, no observer bamboo farm, minecraft bamboo, chunk safe bamboo farm',
+			isAccessibleForFree: true,
+			author: publisher,
+			publisher
+		},
+		breadcrumbs([
+			{ name: 'Home', path: '/' },
+			{ name: 'Builds', path: '/builds' },
+			{ name: 'Detector Rail Bamboo Farm', path: PATH }
+		])
+	];
+
+	if (videoId && build.videoUploadDate) {
+		farmLd.push({
+			'@context': 'https://schema.org',
+			'@type': 'VideoObject',
+			name: 'Detector Rail Bamboo Farm Tutorial Java 1.21.10+',
+			description: SEO_DESCRIPTION,
+			thumbnailUrl: [youTubeThumb(videoId)],
+			uploadDate: build.videoUploadDate,
+			embedUrl: youTubeEmbed(videoId),
+			contentUrl: build.youtubeUrl,
+			publisher
+		});
+	}
+
 	import heroImg from '$lib/assets/posts/worldPages/bambooComparison/TOP_DETECTOR.webp';
+	import Seo from '$lib/components/global/Seo.svelte';
 
 	const navSections: NavSection[] = [
 		{ id: 'metrics',  label: 'Performance' },
@@ -13,10 +68,26 @@
 	];
 </script>
 
-<svelte:head>
-	<title>Detector Rail Bamboo Farm — QuercusCraft</title>
-	<meta name="description" content="An innovative, tileable bamboo farm powered by a hopper minecart on detector rails. No observers, minimal lag, and chunk-unload safe." />
-</svelte:head>
+<Seo
+	title="Minecraft Bamboo Farm — Tileable Java Tutorial, No Observers"
+	description={SEO_DESCRIPTION}
+	path={PATH}
+	image="/og/detector-bamboo-farm.jpg"
+	imageAlt="Top-down view of the detector rail bamboo farm running in vanilla Minecraft Java Edition"
+	type="article"
+	keywords={[
+		'minecraft bamboo farm',
+		'java bamboo farm',
+		'bamboo farm tutorial',
+		'bamboo java tutorial',
+		'tileable bamboo farm',
+		'detector rail bamboo farm',
+		'no observer bamboo farm',
+		'chunk safe bamboo farm',
+		'minecraft bamboo'
+	]}
+	jsonLd={farmLd}
+/>
 
 <PostLayout
 	title="Detector Rail Bamboo Farm"
@@ -73,6 +144,14 @@
 					Does not break during chunk loading and unloading — the minecart resumes harvesting automatically when the chunk reloads. No reset or babysitting required.
 				</p>
 			</div>
+
+			<p class="mt-6 text-base leading-relaxed text-stone-400">
+				Rates above are quoted per hour and per
+				<a href="/blog/etho-hour" class="text-green-500 underline-offset-2 hover:underline">Etho Hour</a>
+				— see the glossary for what a
+				<GlossaryTerm slug="tick">Minecraft tick</GlossaryTerm> is, and how fast
+				<GlossaryTerm slug="bamboo">bamboo</GlossaryTerm> actually grows.
+			</p>
 		</div>
 	</section>
 

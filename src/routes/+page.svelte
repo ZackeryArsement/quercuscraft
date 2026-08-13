@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { PostCard, Affiliate } from '$lib/types';
 	import { builds } from '$lib/data/builds';
+	import Seo from '$lib/components/global/Seo.svelte';
 	import HeroSection from '$lib/components/landingPage/HeroSection.svelte';
 	import FeaturedBuilds from '$lib/components/FeaturedBuilds.svelte';
 	import LatestPosts from '$lib/components/LatestPosts.svelte';
@@ -56,6 +57,13 @@
 		}*/
 	];
 </script>
+
+<Seo
+	title="QuercusCraft — Vanilla Minecraft Builds & Free World Downloads"
+	description="Playable vanilla Minecraft builds with free world downloads — a working chess board, an arcade claw machine, and technical farms. No mods."
+	path="/"
+	imageAlt="QuercusCraft — vanilla Minecraft builds and free world downloads"
+/>
 
 <HeroSection />
 <FeaturedBuilds {builds} />

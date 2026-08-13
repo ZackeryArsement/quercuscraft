@@ -9,6 +9,12 @@ export interface BuildCard {
 	image?: string; // filename in src/lib/assets/buildThumbnail/, e.g. 'CHESS_SHOWCASE.png'
 	alt?: string;   // alt text for the image
 	youtubeUrl?: string;
+	/**
+	 * ISO date the YouTube video was published, e.g. '2026-03-14'. Google requires
+	 * uploadDate on VideoObject markup, so video structured data (and any chance of
+	 * a video thumbnail in search results) is only emitted once this is set.
+	 */
+	videoUploadDate?: string;
 }
 
 export interface BlogPost {
@@ -21,6 +27,8 @@ export interface BlogPost {
 	image?: string; // filename in src/lib/assets/blogThumbnails/
 	alt?: string;
 	youtubeUrl?: string;
+	/** ISO publish date of the YouTube video — see BuildCard.videoUploadDate. */
+	videoUploadDate?: string;
 }
 
 export interface PostCard {

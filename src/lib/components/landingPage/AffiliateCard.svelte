@@ -17,7 +17,7 @@
 >
 	<!-- Logo -->
 	{#if affiliate.logo}
-		<img
+		<img loading="lazy" decoding="async"
 			src={affiliate.logo}
 			alt="{affiliate.name} logo"
 			class="h-16 w-16 shrink-0 rounded-md object-contain"

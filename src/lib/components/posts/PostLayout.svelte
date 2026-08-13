@@ -60,9 +60,16 @@
 <article style="background: radial-gradient(ellipse 120% 80% at 50% 50%, #111711 0%, #0d0d0d 45%, #080808 100%); background-attachment: fixed;">
 	<!-- ── Hero ──────────────────────────────────────────────────────────────── -->
 	<div class="relative h-[65vh] min-h-[420px] overflow-hidden">
+		<!--
+			The hero fills the first viewport and is the LCP element on every build
+			page, so it must NOT be lazy — it is fetched eagerly and at high priority.
+		-->
 		<img
 			src={heroSrc}
 			alt={heroAlt}
+			loading="eager"
+			fetchpriority="high"
+			decoding="async"
 			class="absolute inset-0 h-full w-full object-cover"
 		/>
 		<div

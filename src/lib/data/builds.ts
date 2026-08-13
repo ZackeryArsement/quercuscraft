@@ -2,6 +2,20 @@ import type { BuildCard } from '$lib/types';
 
 export const builds: BuildCard[] = [
 	{
+		title: 'The Arcade Claw Machine',
+		category: 'Game',
+		date: 'Aug 2026',
+		description:
+			'A fully working claw machine inside a hand-lit arcade — nine colour-matched prizes, and completely unbreakable.',
+		tags: ['Technical', 'Game', 'Redstone', 'Vanilla'],
+		href: '/builds/arcade-claw-machine',
+		featured: true,
+		image: 'ARCADE_CLAW.webp',
+		alt: 'The R-QADE claw machine cabinet in vanilla Minecraft, its prize pit packed with colourful toys',
+		youtubeUrl: 'https://www.youtube.com/watch?v=0S7wxkARBO4&t=554s',
+		videoUploadDate: '2026-08-13'
+	},
+	{
 		title: 'Chess Valley',
 		category: 'Game',
 		date: 'Mar 2026',
@@ -11,7 +25,10 @@ export const builds: BuildCard[] = [
 		featured: true,
 		image: 'CHESS_SHOWCASE.webp',
 		alt: 'Ground view of Chess Valley highlighting a pawn on the chess board',
-		youtubeUrl: 'https://www.youtube.com/watch?v=Q_N5OvFtnvw'
+		// Primary video: the technical showcase. The earlier casual playthrough
+		// (Q_N5OvFtnvw, 3 Mar 2026) is embedded further down the build page.
+		youtubeUrl: 'https://youtu.be/opvlO2BStZY',
+		videoUploadDate: '2026-03-16'
 	},
 	{
 		title: 'Detector Rail Bamboo Farm',
@@ -23,7 +40,8 @@ export const builds: BuildCard[] = [
 		featured: true,
 		image: 'DETECTOR_RAIL_FARM.webp',
 		alt: 'Minecart actively harvesting bamboo in original bamboo farm',
-		youtubeUrl: 'https://www.youtube.com/watch?v=WUqqw2ixf5M&t=56s'
+		youtubeUrl: 'https://www.youtube.com/watch?v=WUqqw2ixf5M&t=56s',
+		videoUploadDate: '2026-01-12'
 	},
 	{
 		title: 'Bamboo Comparisons',
@@ -35,6 +53,7 @@ export const builds: BuildCard[] = [
 		featured: true,
 		image: 'BAMBOO_COMPARISON.webp',
 		alt: 'Close up of Minecraft Panda eating a bamboo shoot',
-		youtubeUrl: 'https://www.youtube.com/watch?v=16LjyiLmYjQ'
+		youtubeUrl: 'https://www.youtube.com/watch?v=16LjyiLmYjQ',
+		videoUploadDate: '2026-01-03'
 	}
 ];

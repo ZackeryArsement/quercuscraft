@@ -1,17 +1,22 @@
 <script lang="ts">
 	import DonationSection from '$lib/components/landingPage/DonationSection.svelte';
+	import Seo from '$lib/components/global/Seo.svelte';
 </script>
 
-<svelte:head>
-	<title>About — QuercusCraft</title>
-	<meta name="description" content="Learn about QuercusCraft — a technical Minecraft creator focused on redstone, farms, and precision builds. Gear list and setup included." />
-</svelte:head>
+<Seo
+	title="About — QuercusCraft"
+	description="Learn about QuercusCraft — a technical Minecraft creator focused on redstone, farms, and precision builds. Gear list and setup included."
+	path="/about"
+	type="website"
+/>
 
 <!-- ── Header ── -->
 <div class="border-b-4 border-green-900" style="background: linear-gradient(160deg, #0c120c 0%, #111a11 40%, #090c09 100%);">
-	<div class="mx-auto max-w-4xl px-10 py-20">
+	<div class="mx-auto max-w-4xl px-6 py-20 sm:px-10">
 		<p class="mb-4 text-xs font-semibold tracking-widest text-green-600 uppercase">About</p>
-		<h1 class="mb-6 text-5xl font-bold leading-tight text-white lg:text-6xl">QuercusCraft</h1>
+		<!-- "QuercusCraft" is one unbreakable word, so it has to step down on
+		     narrow phones or it overflows the viewport. -->
+		<h1 class="mb-6 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">QuercusCraft</h1>
 		<p class="max-w-2xl text-lg leading-relaxed text-stone-400">
 			Servant of Christ Jesus performing Technical Minecraft focused on redstone engineering, farm optimization, and precision builds.
 			Every project on this site is designed to be functional, well-documented, and free to download.

@@ -1,0 +1,44 @@
+<!--
+  Diagram: the black box with a sealed roof — nothing is picked out of the dark.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-label="Diagram of the arcade black box with a sealed roof, everything sitting in darkness">
+  <defs>
+    <linearGradient id="shaft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffeec2" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#ffeec2" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="#08080a"/>
+  <!-- black box shell -->
+  <rect x="0" y="60" width="1600" height="660" fill="none" stroke="#1a1a1f" stroke-width="8"/>
+  
+  <!-- sealed roof, no light holes -->
+  <rect x="0" y="60" width="1600" height="26" fill="#121216"/>
+  <rect y="700" width="1600" height="200" fill="#0d0d10"/>
+  <rect x="448" y="560" width="113" height="179" fill="#17171b"/>
+  <rect x="793" y="485" width="120" height="251" fill="#17171b"/>
+  <rect x="1496" y="601" width="66" height="106" fill="#17171b"/>
+  <rect x="88" y="557" width="149" height="144" fill="#17171b"/>
+  <rect x="1010" y="469" width="66" height="263" fill="#17171b"/>
+  <rect x="95" y="524" width="126" height="195" fill="#17171b"/>
+  <rect x="1338" y="657" width="78" height="75" fill="#17171b"/>
+  <rect x="40" y="512" width="73" height="217" fill="#17171b"/>
+  <rect x="1226" y="486" width="137" height="243" fill="#17171b"/>
+  <rect x="508" y="633" width="63" height="93" fill="#17171b"/>
+  <rect x="449" y="479" width="94" height="233" fill="#17171b"/>
+  <rect x="837" y="614" width="138" height="104" fill="#17171b"/>
+  <rect x="622" y="608" width="111" height="125" fill="#17171b"/>
+  <rect x="529" y="506" width="114" height="217" fill="#17171b"/>
+  <rect x="860" y="591" width="95" height="112" fill="#17171b"/>
+  <rect x="787" y="551" width="113" height="160" fill="#17171b"/>
+  <rect x="119" y="479" width="100" height="229" fill="#17171b"/>
+  <rect x="1275" y="532" width="70" height="192" fill="#17171b"/>
+  <rect x="373" y="550" width="143" height="165" fill="#17171b"/>
+  <rect x="1020" y="597" width="116" height="110" fill="#17171b"/>
+  <rect x="0" y="609" width="115" height="122" fill="#17171b"/>
+  <rect x="648" y="580" width="128" height="140" fill="#17171b"/>
+  <rect x="438" y="466" width="82" height="245" fill="#17171b"/>
+  <rect x="88" y="475" width="113" height="252" fill="#17171b"/>
+  <rect x="261" y="469" width="100" height="242" fill="#17171b"/>
+  <rect x="682" y="484" width="79" height="230" fill="#17171b"/>
+</svg>

@@ -66,6 +66,16 @@
 			label: 'Blog',
 			sections: [
 				{
+					title: 'Reference',
+					links: [
+						{
+							label: 'Minecraft Glossary',
+							href: '/glossary',
+							description: 'Ticks, random ticks, bamboo — defined'
+						}
+					]
+				},
+				{
 					title: 'Posts',
 					links: [
 						{ label: 'All Posts', href: '/blog', description: 'Browse every article' }/*,
@@ -290,14 +300,14 @@
 						onclick={closeAll}
 					>
 						Affiliates
-					</a>
+					</a>-->
 					<a
 						href="/about"
 						class="block rounded-md px-3 py-2 text-sm text-stone-300 transition-colors hover:bg-stone-800 hover:text-white"
 						onclick={closeAll}
 					>
 						About
-					</a>-->
+					</a>
 				</div>
 			</div>
 		</div>

@@ -1,9 +1,85 @@
 <script lang="ts">
 	import PostLayout from '$lib/components/posts/PostLayout.svelte';
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
+	import Seo from '$lib/components/global/Seo.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
 	import { builds } from '$lib/data/builds';
+	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
 	const build = builds.find(b => b.href === '/builds/chess-valley')!;
+
+	// ── SEO ──────────────────────────────────────────────────────────────────
+	const PATH = '/builds/chess-valley';
+	const SEO_DESCRIPTION =
+		'A fully playable game of Minecraft chess built in vanilla — no mods, no plugins. Movable pieces, a graveyard, pawn promotion. Free world download.';
+
+	const videoId = youTubeId(build.youtubeUrl);
+
+	// The earlier, more relaxed video. Kept on the page below the write-up so the
+	// technical showcase stays the headline video without losing the playthrough.
+	const CASUAL_VIDEO_ID = 'Q_N5OvFtnvw';
+	const CASUAL_VIDEO_DATE = '2026-03-03';
+
+	const chessLd: Record<string, unknown>[] = [
+		{
+			'@context': 'https://schema.org',
+			'@type': 'CreativeWork',
+			'@id': `${SITE_URL}${PATH}#build`,
+			name: 'Chess Valley — Minecraft Chess',
+			alternateName: 'Minecraft Chess',
+			headline: 'Playable Minecraft Chess in Vanilla — No Mods',
+			description: SEO_DESCRIPTION,
+			url: abs(PATH),
+			image: abs('/og/chess-valley.jpg'),
+			inLanguage: 'en',
+			genre: ['Minecraft', 'Redstone', 'Map'],
+			about: [
+				{ '@type': 'Thing', name: 'Minecraft' },
+				{ '@type': 'Thing', name: 'Chess' },
+				{ '@type': 'VideoGame', name: 'Minecraft' }
+			],
+			keywords:
+				'minecraft chess, vanilla minecraft chess, minecraft chess board, playable chess in minecraft, no mods, redstone chess, minecraft chess map, minecraft chess world download',
+			isAccessibleForFree: true,
+			author: publisher,
+			publisher
+		},
+		breadcrumbs([
+			{ name: 'Home', path: '/' },
+			{ name: 'Builds', path: '/builds' },
+			{ name: 'Chess Valley', path: PATH }
+		])
+	];
+
+	// Google only treats this as a video result when uploadDate is present, so the
+	// block is omitted entirely until `videoUploadDate` is filled in on the build.
+	if (videoId && build.videoUploadDate) {
+		chessLd.push({
+			'@context': 'https://schema.org',
+			'@type': 'VideoObject',
+			name: 'How I Engineered a Working Chess Game in Minecraft',
+			description: SEO_DESCRIPTION,
+			thumbnailUrl: [youTubeThumb(videoId)],
+			uploadDate: build.videoUploadDate,
+			embedUrl: youTubeEmbed(videoId),
+			contentUrl: build.youtubeUrl,
+			publisher
+		});
+	}
+
+	// The playthrough embedded further down the page gets its own VideoObject —
+	// both videos are genuinely on this page, so both are declared.
+	chessLd.push({
+		'@context': 'https://schema.org',
+		'@type': 'VideoObject',
+		name: 'Minecraft Chess Showcase - Vanilla No Mods',
+		description:
+			'A casual playthrough of Chess Valley — a fully playable chess board built in vanilla Minecraft with no mods.',
+		thumbnailUrl: [youTubeThumb(CASUAL_VIDEO_ID)],
+		uploadDate: CASUAL_VIDEO_DATE,
+		embedUrl: youTubeEmbed(CASUAL_VIDEO_ID),
+		contentUrl: `https://www.youtube.com/watch?v=${CASUAL_VIDEO_ID}`,
+		publisher
+	});
 
 	// ── Images ───────────────────────────────────────────────────────────────
 	import heroImg         from '$lib/assets/posts/worldPages/chessValley/FULLBOARD.webp';
@@ -33,18 +109,34 @@
 			]
 		},
 		{ id: 'hidden-pieces', label: 'Hidden Chess Pieces' },
+		{ id: 'playthrough',   label: 'Casual Playthrough' },
 		{ id: 'download',      label: 'World Download' }
 	];
 
 </script>
 
-<svelte:head>
-	<title>Chess Valley — QuercusCraft</title>
-	<meta name="description" content="A fully functional game of chess built inside vanilla Minecraft, set within a sculpted interactive valley. Free world download included." />
-</svelte:head>
+<Seo
+	title="Minecraft Chess — Playable Vanilla Chess Board, No Mods"
+	description={SEO_DESCRIPTION}
+	path={PATH}
+	image="/og/chess-valley.jpg"
+	imageAlt="An aerial view of Chess Valley — a fully playable Minecraft chess board built in vanilla, set in a sculpted valley"
+	type="article"
+	keywords={[
+		'minecraft chess',
+		'vanilla minecraft chess',
+		'minecraft chess no mods',
+		'minecraft chess board',
+		'playable chess in minecraft',
+		'redstone chess',
+		'minecraft chess map',
+		'minecraft chess world download'
+	]}
+	jsonLd={chessLd}
+/>
 
 <PostLayout
-	title="Chess Valley"
+	title="Minecraft Chess - Chess Valley"
 	heroSrc={heroImg}
 	heroAlt="Aerial view of Chess Valley — a fully functional chess board inside a sculpted Minecraft valley"
 	{navSections}
@@ -103,7 +195,7 @@
 			</p>
 
 			<figure class="mx-auto mt-10 w-4/5">
-				<img
+				<img width="1920" height="1080" loading="lazy" decoding="async"
 					src={billboardImg}
 					alt="Billboard overlooking chess valley"
 					class="w-full"
@@ -141,7 +233,7 @@
 			</div>
 
 			<figure class="mx-auto mt-10 w-4/5">
-				<img
+				<img width="1920" height="1080" loading="lazy" decoding="async"
 					src={manualImg}
 					alt="The in-world manual book available at the spawn point of Chess Valley"
 					class="w-full"
@@ -175,7 +267,7 @@
 					</p>
 				</div>
 				<figure class="mx-auto mt-8 w-4/5">
-					<img
+					<img width="1920" height="1080" loading="lazy" decoding="async"
 						src={fullBuildImg}
 						alt="A pawn selected on the Chess Valley board with valid move squares highlighted"
 						class="w-full"
@@ -202,7 +294,7 @@
 				<!-- Side-by-side: active on / active off -->
 				<div class="mt-6 grid grid-cols-2 gap-4">
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={activeOnImg}
 							alt="Billboard showing the piece CAN move — active green state"
 							class="w-full"
@@ -210,7 +302,7 @@
 						<figcaption class="mt-2 text-center text-xs text-stone-600">Active — moving is not allowed.</figcaption>
 					</figure>
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={activeOffImg}
 							alt="Billboard showing the piece CANNOT move — inactive state"
 							class="w-full"
@@ -256,7 +348,7 @@
 				<!-- Side-by-side: closed / open -->
 				<div class="mt-8 grid grid-cols-2 gap-4">
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={graveyardImg}
 							alt="The Chess Valley graveyard in its closed state"
 							class="w-full"
@@ -264,7 +356,7 @@
 						<figcaption class="mt-2 text-center text-xs text-stone-600">Graveyard — closed.</figcaption>
 					</figure>
 					<figure>
-						<img
+						<img width="900" height="506" loading="lazy" decoding="async"
 							src={graveyardExImg}
 							alt="The Chess Valley graveyard open, showing captured pieces"
 							class="w-full"
@@ -288,7 +380,7 @@
 					</p>
 				</div>
 				<figure class="mx-auto mt-10 w-4/5">
-					<img
+					<img width="1920" height="1080" loading="lazy" decoding="async"
 						src={promotionsImg}
 						alt="Promotion segment, showing available queens"
 						class="w-full"
@@ -321,7 +413,7 @@
 			</div>
 
 			<figure class="mx-auto mt-10 w-4/5">
-				<img
+				<img width="1920" height="1080" loading="lazy" decoding="async"
 					src={pawnImg}
 					alt="One of the six hidden chess pieces concealed within the Chess Valley environment"
 					class="w-full"
@@ -334,7 +426,7 @@
 	</section>
 
 	<figure class="mx-auto mt-8 mb-8 w-4/5">
-		<img
+		<img width="1920" height="1080" loading="lazy" decoding="async"
 			src={billboardImg}
 			alt="One of the large billboard displays beside the Chess Valley board"
 			class="w-full"
@@ -343,6 +435,42 @@
 			The billboard positioned beside the board for both players to read.
 		</figcaption>
 	</figure>
+
+	<!-- ── Casual playthrough video ──────────────────────────────────────── -->
+	<section id="playthrough" class="border-t border-stone-800 py-16">
+		<div class="mx-auto max-w-4xl px-8">
+			<p class="mb-3 text-s font-semibold tracking-widest text-green-600 uppercase">Also On Video</p>
+			<h2 class="mb-8 text-center text-3xl font-bold text-white">The Casual Playthrough</h2>
+
+			<div class="space-y-5 text-xl leading-relaxed text-stone-300">
+				<p>
+					The video at the top of this page is the technical showcase — how the board was
+					engineered and why it works the way it does. This one is the other half: a relaxed
+					walkthrough of the finished build, playing a game on it rather than pulling it apart.
+				</p>
+				<p>
+					If you came here to see Minecraft chess actually being played, start with this one.
+				</p>
+			</div>
+
+			<div class="mx-auto mt-10 w-full">
+				<div class="relative w-full overflow-hidden" style="padding-bottom: 56.25%;">
+					<iframe
+						class="absolute inset-0 h-full w-full"
+						src={`https://www.youtube.com/embed/${CASUAL_VIDEO_ID}`}
+						title="Minecraft Chess Showcase - Vanilla No Mods"
+						loading="lazy"
+						frameborder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					></iframe>
+				</div>
+				<p class="mt-3 text-center text-xs text-stone-600">
+					Minecraft Chess Showcase — a casual playthrough of the finished valley.
+				</p>
+			</div>
+		</div>
+	</section>
 
 	<!-- ── World Download ────────────────────────────────────────────────── -->
 	<WorldDownloadFooter

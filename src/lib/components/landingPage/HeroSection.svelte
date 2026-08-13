@@ -12,7 +12,7 @@
 		fetchpriority='high'
 		decoding="async"
 		width="1920"
-		height="1080"
+		height="862"
 		class="pointer-events-none absolute inset-0 h-full w-full object-cover"
 		aria-hidden="true"
 	/>

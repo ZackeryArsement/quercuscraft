@@ -2,10 +2,64 @@
 	import BlogLayout from '$lib/components/posts/BlogLayout.svelte';
 	import type { NavSection } from '$lib/components/posts/BlogLayout.svelte';
 	import { posts } from '$lib/data/posts';
+	import GlossaryTerm from '$lib/components/GlossaryTerm.svelte';
+	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
 	const post = posts.find(p => p.href === '/blog/etho-hour')!;
+
+	// ── SEO ──────────────────────────────────────────────────────────────────
+	const PATH = '/blog/etho-hour';
+	const SEO_DESCRIPTION =
+		'What is a Minecraft tick? An Etho hopper clock counts game ticks, not real seconds, so it stays accurate under lag. The 8x − 6 formula explained.';
+
+	const videoId = youTubeId(post.youtubeUrl);
+
+	const ethoLd: Record<string, unknown>[] = [
+		{
+			'@context': 'https://schema.org',
+			'@type': 'Article',
+			'@id': `${SITE_URL}${PATH}#article`,
+			headline: 'The Etho Hour — A Standard Unit of Time for Minecraft',
+			alternateName: 'Etho Hopper Clock',
+			description: SEO_DESCRIPTION,
+			url: abs(PATH),
+			image: abs('/og/etho-hour.jpg'),
+			inLanguage: 'en',
+			articleSection: 'Analysis',
+			about: [
+				{ '@type': 'Thing', name: 'Minecraft' },
+				{ '@type': 'Thing', name: 'Game tick' },
+				{ '@type': 'VideoGame', name: 'Minecraft' }
+			],
+			keywords:
+				'minecraft tick, minecraft clock, etho clock, etho hopper clock, what is an etho clock, what is an etho hopper clock, minecraft tps, minecraft redstone clock, hopper clock',
+			author: publisher,
+			publisher,
+			datePublished: post.videoUploadDate ?? undefined
+		},
+		breadcrumbs([
+			{ name: 'Home', path: '/' },
+			{ name: 'Blog', path: '/blog' },
+			{ name: 'Etho Hour', path: PATH }
+		])
+	];
+
+	if (videoId && post.videoUploadDate) {
+		ethoLd.push({
+			'@context': 'https://schema.org',
+			'@type': 'VideoObject',
+			name: 'The Etho Hour',
+			description: SEO_DESCRIPTION,
+			thumbnailUrl: [youTubeThumb(videoId)],
+			uploadDate: post.videoUploadDate,
+			embedUrl: youTubeEmbed(videoId),
+			contentUrl: post.youtubeUrl,
+			publisher
+		});
+	}
 
 	import soapBoxImg      from '$lib/assets/posts/blogPages/ethoHour/SOAP_BOX.webp';
 	import clockCounterImg from '$lib/assets/posts/blogPages/ethoHour/CLOCK_WITH_COUNTER.webp';
+	import Seo from '$lib/components/global/Seo.svelte';
 
 	const navSections: NavSection[] = [
 		{ id: 'problem',    label: 'The Problem' },
@@ -16,10 +70,26 @@
 	];
 </script>
 
-<svelte:head>
-	<title>Etho Hour — QuercusCraft</title>
-	<meta name="description" content="Minecraft has no standardized unit of time. An Etho Hour clock dilates with the game's dynamic tick rate, giving you a consistent metric that actually means something." />
-</svelte:head>
+<Seo
+	title="Minecraft Tick & the Etho Hopper Clock — The Etho Hour"
+	description={SEO_DESCRIPTION}
+	path={PATH}
+	image="/og/etho-hour.jpg"
+	imageAlt="An Etho hopper clock with a 60-cycle counter attached, forming a complete Etho Hour timer in Minecraft"
+	type="article"
+	keywords={[
+		'minecraft tick',
+		'minecraft clock',
+		'etho clock',
+		'etho hopper clock',
+		'what is an etho clock',
+		'what is an etho hopper clock',
+		'minecraft tps',
+		'hopper clock',
+		'minecraft redstone clock'
+	]}
+	jsonLd={ethoLd}
+/>
 
 <BlogLayout
 	title="Etho Hour"
@@ -51,13 +121,14 @@
 					is unreliable with it.
 				</p>
 				<p>
-					The root cause is the tick. Minecraft's internal clock runs in ticks, not seconds.
+					The root cause is the <GlossaryTerm slug="tick">tick</GlossaryTerm>. Minecraft's internal
+					clock runs in ticks, not seconds.
 					And ticks are not guaranteed to line up with real-world time.
 				</p>
 			</div>
 
 			<figure class="mx-auto mt-10 w-4/5">
-				<img
+				<img width="1400" height="788" loading="lazy" decoding="async"
 					src={soapBoxImg}
 					alt="The author standing on a soap box, passionately making a point about Minecraft timekeeping"
 					class="w-full"
@@ -118,7 +189,8 @@
 
 			<div class="space-y-5 text-2xl leading-relaxed text-stone-300">
 				<p>
-					The Etho Hopper Clock — named after the Minecraft YouTuber Etho, who popularized
+					The <GlossaryTerm slug="etho-hopper-clock">Etho Hopper Clock</GlossaryTerm> — named after
+					the Minecraft YouTuber Etho, who popularized
 					the design — is one of the most precise timing mechanisms available in vanilla
 					Minecraft. It consists of two hoppers facing each other with items bouncing
 					continuously between them. Each time an item successfully transfers through a hopper,
@@ -216,7 +288,7 @@
 			</div>
 
 			<figure class="mx-auto mt-10 w-4/5">
-				<img
+				<img width="1400" height="788" loading="lazy" decoding="async"
 					src={clockCounterImg}
 					alt="The Etho Hopper Clock with a 60-item counter attached, forming a complete Etho Hour timer"
 					class="w-full"
