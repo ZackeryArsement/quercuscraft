@@ -25,7 +25,12 @@
 	let { title, heroSrc, heroAlt = '', navSections, youtubeUrl, children }: Props = $props();
 
 	let activeId = $state('');
-	let videoOpen = $state(false);
+	// Open by default so the player is present in the server-rendered HTML.
+	// Google's video guidance wants the video visible on the page, not revealed
+	// by a click — a click-to-reveal player leaves the VideoObject markup
+	// describing something a crawler never sees. The iframe is lazy-loaded, so
+	// YouTube's payload still costs nothing until it scrolls into view.
+	let videoOpen = $state(true);
 
 	function toEmbedUrl(url: string): string {
 		if (url.includes('/embed/')) return url;
@@ -115,6 +120,7 @@
 					<iframe
 						class="absolute inset-0 h-full w-full"
 						src={toEmbedUrl(youtubeUrl)}
+						loading="lazy"
 						title="YouTube video"
 						frameborder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

@@ -22,7 +22,9 @@
 	let { title, category, date, tags = [], navSections, youtubeUrl, children }: Props = $props();
 
 	let activeId = $state('');
-	let videoOpen = $state(false);
+	// Open by default — see the note in PostLayout. The video needs to exist in
+	// the rendered HTML for the VideoObject markup to describe something real.
+	let videoOpen = $state(true);
 
 	function toEmbedUrl(url: string): string {
 		if (url.includes('/embed/')) return url;
@@ -96,6 +98,7 @@
 					<iframe
 						class="absolute inset-0 h-full w-full"
 						src={toEmbedUrl(youtubeUrl)}
+						loading="lazy"
 						title="YouTube video"
 						frameborder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
