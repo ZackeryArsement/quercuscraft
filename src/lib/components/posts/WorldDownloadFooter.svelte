@@ -45,18 +45,89 @@
 	let { worldName, downloadUrl, minecraftVersion, fileSize, notes }: Props = $props();
 </script>
 
-<!-- id="download" is the anchor target for the hero "Go To Download" button -->
-<section id="download" class="border-t-4 border-green-900 bg-stone-900 px-10 py-16">
+<!--
+	id="download" is the anchor target for the hero "Go To Download" button, so
+	the actual download has to be the FIRST thing in this section. It used to sit
+	below the donation tiers, which meant the button landed the reader on Patreon
+	pricing and read like a paywall. The download is free; it goes first.
+-->
+<section id="download" class="border-t-4 border-green-900 bg-stone-900 px-10 pt-10 pb-16">
 
-	<!-- ── Donations ─────────────────────────────────────────────────────── -->
-	<div class="mb-12 border-b border-stone-700 pb-16">
+	<!-- ── Download ───────────────────────────────────────────────────────── -->
+	<div class="mb-14">
+		<p class="mb-2 text-xs font-semibold tracking-widest text-green-600 uppercase">
+			Free World Download
+		</p>
+		<h2 class="mb-4 text-4xl font-bold text-white">{worldName}</h2>
+
+		<!-- Unambiguous: no signup, no payment, no strings -->
+		<div class="mb-6 flex flex-wrap items-center gap-3">
+			<span class="border-2 border-green-600 bg-green-900 px-3 py-1 text-sm font-bold tracking-wide text-green-200 uppercase">
+				100% Free
+			</span>
+			<span class="text-base text-stone-300">
+				No sign-up, no email, no Patreon needed — just click and download.
+			</span>
+		</div>
+
+		<!-- Button sits above the notes and metadata on purpose: with those first,
+		     a long `notes` string pushed the button below the fold on shorter
+		     screens even though the anchor landed correctly. -->
+		{#if downloadUrl}
+			<a
+				href={downloadUrl}
+				download
+				target="_blank"
+				rel="noopener noreferrer"
+				class="mb-8 inline-block border-2 border-green-600 bg-green-900 px-10 py-4 text-base font-bold text-green-300 transition-colors hover:bg-green-700 hover:text-white"
+			>
+				⬇&nbsp; Download World — Free
+			</a>
+		{:else}
+			<!-- No URL set yet — show an inert placeholder rather than a dead link. -->
+			<span
+				class="mb-8 inline-block cursor-default border-2 border-stone-700 px-10 py-4 text-base font-bold text-stone-500"
+			>
+				⬇&nbsp; Download Coming Soon
+			</span>
+		{/if}
+
+		{#if notes}
+			<p class="mb-8 max-w-2xl leading-relaxed text-stone-400">{notes}</p>
+		{/if}
+
+		{#if minecraftVersion || fileSize}
+			<div class="flex flex-wrap gap-4">
+				{#if minecraftVersion}
+					<div class="border border-stone-700 bg-stone-800 px-5 py-3">
+						<p class="mb-1 text-xs font-semibold tracking-widest text-stone-400 uppercase">
+							Minecraft Version
+						</p>
+						<p class="text-sm font-medium text-white">{minecraftVersion}</p>
+					</div>
+				{/if}
+				{#if fileSize}
+					<div class="border border-stone-700 bg-stone-800 px-5 py-3">
+						<p class="mb-1 text-xs font-semibold tracking-widest text-stone-400 uppercase">
+							File Size
+						</p>
+						<p class="text-sm font-medium text-white">{fileSize}</p>
+					</div>
+				{/if}
+			</div>
+		{/if}
+	</div>
+
+	<!-- ── Donations — strictly optional, and after the download ──────────── -->
+	<div class="border-t border-stone-700 pt-14">
 		<p class="mb-2 text-xs font-semibold tracking-widest text-stone-400 uppercase">
-			Support the Creator
+			Optional — Support the Creator
 		</p>
 		<h3 class="mb-3 text-3xl font-bold text-white">Enjoying the build?</h3>
 		<p class="mb-12 max-w-xl leading-relaxed text-stone-400">
-			Every world on this site is completely free. If you'd like to support future
-			projects, each tier below comes with a permanent thank-you built into the work itself.
+			You've already got the world — it's free, and it stays free. Nothing below is
+			required to download or play it. If you'd like to support future projects, each
+			tier comes with a permanent thank-you built into the work itself.
 		</p>
 
 		<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -114,54 +185,5 @@
 			Monthly tier via Patreon. One-time tiers processed securely via Stripe.
 		</p>
 	</div>
-
-	<!-- ── Download ───────────────────────────────────────────────────────── -->
-	<p class="mb-2 text-xs font-semibold tracking-widest text-green-600 uppercase">Free Download</p>
-	<h2 class="mb-4 text-4xl font-bold text-white">{worldName}</h2>
-	<h3 class="mb-6 text-xl font-medium text-stone-400">World Download</h3>
-
-	{#if notes}
-		<p class="mb-8 max-w-2xl leading-relaxed text-stone-400">{notes}</p>
-	{/if}
-
-	{#if minecraftVersion || fileSize}
-		<div class="mb-8 flex flex-wrap gap-4">
-			{#if minecraftVersion}
-				<div class="border border-stone-700 bg-stone-800 px-5 py-3">
-					<p class="mb-1 text-xs font-semibold tracking-widest text-stone-400 uppercase">
-						Minecraft Version
-					</p>
-					<p class="text-sm font-medium text-white">{minecraftVersion}</p>
-				</div>
-			{/if}
-			{#if fileSize}
-				<div class="border border-stone-700 bg-stone-800 px-5 py-3">
-					<p class="mb-1 text-xs font-semibold tracking-widest text-stone-400 uppercase">
-						File Size
-					</p>
-					<p class="text-sm font-medium text-white">{fileSize}</p>
-				</div>
-			{/if}
-		</div>
-	{/if}
-
-	{#if downloadUrl}
-		<a
-			href={downloadUrl}
-			download
-			target="_blank"
-			rel="noopener noreferrer"
-			class="inline-block border-2 border-green-600 bg-green-900 px-10 py-4 text-base font-bold text-green-300 transition-colors hover:bg-green-700 hover:text-white"
-		>
-			⬇&nbsp; Download World
-		</a>
-	{:else}
-		<!-- No URL set yet — show an inert placeholder rather than a dead link. -->
-		<span
-			class="inline-block cursor-default border-2 border-stone-700 px-10 py-4 text-base font-bold text-stone-500"
-		>
-			⬇&nbsp; Download Coming Soon
-		</span>
-	{/if}
 
 </section>

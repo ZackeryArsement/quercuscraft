@@ -105,7 +105,7 @@
 					href="#download"
 					class="shrink-0 border-2 border-green-600 bg-green-900/60 px-6 py-3 text-sm font-semibold text-green-300 backdrop-blur-sm transition-colors hover:bg-green-700 hover:text-white"
 				>
-					Go To Download ↓
+					Free Download ↓
 				</a>
 			</div>
 		</div>

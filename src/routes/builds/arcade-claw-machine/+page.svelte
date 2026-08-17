@@ -936,7 +936,7 @@
 	<!-- ── World Download ────────────────────────────────────────────────── -->
 	<WorldDownloadFooter
 		worldName="The Arcade Claw Machine"
-		downloadUrl="https://pub-34f93473d6854fe28e01e96e6aacea21.r2.dev/Arcade%20Claw.zip"
+		downloadUrl="https://pub-34f93473d6854fe28e01e96e6aacea21.r2.dev/Arcade%20Claw%20Download.zip"
 		minecraftVersion="1.21.10"
 		notes="The complete arcade world save — the claw machine and its full delivery system, all nine prizes, the reset memory, the countdown timer, the Pac-Pac and jukebox cabinets, and the black box with its roof lighting. No mods or resource packs required. Pure vanilla."
 	/>
