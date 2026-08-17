@@ -10,8 +10,13 @@ export const builds: BuildCard[] = [
 		tags: ['Technical', 'Game', 'Redstone', 'Vanilla'],
 		href: '/builds/arcade-claw-machine',
 		featured: true,
-		image: 'ARCADE_CLAW.webp',
-		alt: 'The R-QADE claw machine cabinet in vanilla Minecraft, its prize pit packed with colourful toys',
+		// The build cards are ~3.4:1, which crops half the height off a 16:9 shot.
+		// The cabinet front is a tall subject and survived that badly, so the card
+		// uses the button panel instead: it fills the width, reads at a glance, and
+		// shows the nine colour-coded controls. ARCADE_CLAW.webp is still the page
+		// hero and the social card, where the aspect ratio is far less extreme.
+		image: 'ARCADE_BUTTON_PANEL.webp',
+		alt: 'The claw machine control panel — nine colour-framed buttons, each matching one of the nine prizes',
 		youtubeUrl: 'https://www.youtube.com/watch?v=0S7wxkARBO4&t=554s',
 		videoUploadDate: '2026-08-13T12:00:00-05:00'
 	},

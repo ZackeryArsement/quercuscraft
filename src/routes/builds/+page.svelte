@@ -189,7 +189,13 @@
 				{#each filteredBuilds as build, i (build.href)}
 					{@const imgSrc = build.image ? getBuildThumbnail(build.image) : null}
 
-					<article class="group relative h-96 overflow-hidden bg-black">
+					<!--
+						The whole card is the link. It used to be just the title block, so
+						clicking the image or the description did nothing. One anchor wrapping
+						everything keeps the title as the anchor text (good for search) and
+						avoids nesting interactive elements.
+					-->
+					<a href={build.href} class="group relative block h-96 overflow-hidden bg-black">
 						{#if imgSrc}
 							<img
 								src={imgSrc}
@@ -208,7 +214,7 @@
 						{/if}
 
 						<!-- Title block — top-left -->
-						<a href={build.href} class="absolute top-0 left-0 max-w-lg p-8">
+						<div class="absolute top-0 left-0 max-w-lg p-8">
 							<div class="mb-3 flex flex-wrap gap-1.5">
 								{#each build.tags.toSorted() as tag}
 									<span class="border border-green-900 bg-green-950/70 px-2.5 py-0.5 text-xs font-medium text-white-400">
@@ -222,13 +228,13 @@
 							</h2>
 
 							<p class="mt-2 text-m text-white-600">{build.date}</p>
-						</a>
+						</div>
 
 						<!-- Description block — bottom-right -->
 						<div class="absolute right-0 bottom-0 flex h-1/2 w-2/5 flex-col justify-end p-8 text-center">
 							<p class="text-2xl leading-relaxed text-stone-300">{build.description}</p>
 						</div>
-					</article>
+					</a>
 				{/each}
 			</div>
 		{:else}
