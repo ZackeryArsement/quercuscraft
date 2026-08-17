@@ -12,6 +12,6 @@ export const posts: BlogPost[] = [
 		image: 'ETHO_HOPPER_CLOCK.webp',
 		alt: 'An Etho Hopper Clock built in Minecraft',
 		youtubeUrl: 'https://www.youtube.com/watch?v=fy5y5KW3OwI',
-		videoUploadDate: '2025-12-23'
+		videoUploadDate: '2025-12-23T12:00:00-06:00'
 	}
 ];

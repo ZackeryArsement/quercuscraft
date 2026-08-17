@@ -18,7 +18,7 @@
 	// The earlier, more relaxed video. Kept on the page below the write-up so the
 	// technical showcase stays the headline video without losing the playthrough.
 	const CASUAL_VIDEO_ID = 'Q_N5OvFtnvw';
-	const CASUAL_VIDEO_DATE = '2026-03-03';
+	const CASUAL_VIDEO_DATE = '2026-03-03T12:00:00-06:00';
 
 	const chessLd: Record<string, unknown>[] = [
 		{

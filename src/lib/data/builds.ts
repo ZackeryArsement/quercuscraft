@@ -13,7 +13,7 @@ export const builds: BuildCard[] = [
 		image: 'ARCADE_CLAW.webp',
 		alt: 'The R-QADE claw machine cabinet in vanilla Minecraft, its prize pit packed with colourful toys',
 		youtubeUrl: 'https://www.youtube.com/watch?v=0S7wxkARBO4&t=554s',
-		videoUploadDate: '2026-08-13'
+		videoUploadDate: '2026-08-13T12:00:00-05:00'
 	},
 	{
 		title: 'Chess Valley',
@@ -28,7 +28,7 @@ export const builds: BuildCard[] = [
 		// Primary video: the technical showcase. The earlier casual playthrough
 		// (Q_N5OvFtnvw, 3 Mar 2026) is embedded further down the build page.
 		youtubeUrl: 'https://youtu.be/opvlO2BStZY',
-		videoUploadDate: '2026-03-16'
+		videoUploadDate: '2026-03-16T12:00:00-05:00'
 	},
 	{
 		title: 'Detector Rail Bamboo Farm',
@@ -41,7 +41,7 @@ export const builds: BuildCard[] = [
 		image: 'DETECTOR_RAIL_FARM.webp',
 		alt: 'Minecart actively harvesting bamboo in original bamboo farm',
 		youtubeUrl: 'https://www.youtube.com/watch?v=WUqqw2ixf5M&t=56s',
-		videoUploadDate: '2026-01-12'
+		videoUploadDate: '2026-01-12T12:00:00-06:00'
 	},
 	{
 		title: 'Bamboo Comparisons',
@@ -54,6 +54,6 @@ export const builds: BuildCard[] = [
 		image: 'BAMBOO_COMPARISON.webp',
 		alt: 'Close up of Minecraft Panda eating a bamboo shoot',
 		youtubeUrl: 'https://www.youtube.com/watch?v=16LjyiLmYjQ',
-		videoUploadDate: '2026-01-03'
+		videoUploadDate: '2026-01-03T12:00:00-06:00'
 	}
 ];

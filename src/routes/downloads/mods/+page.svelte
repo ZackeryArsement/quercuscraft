@@ -275,7 +275,13 @@
 								class="block border border-stone-800 bg-stone-900"
 							>
 								{#if iconSrc}
-									<img loading="lazy" decoding="async" src={iconSrc} alt="{mod.name} icon" class="h-36 w-full object-cover" />
+									<!--
+										Mod icons are square (96px–512px). object-cover in a full-width
+										144px band scaled them to fill and cropped the top and bottom off,
+										which read as stretched. A centred square box with object-contain
+										keeps the aspect ratio and shows the whole icon.
+									-->
+									<img loading="lazy" decoding="async" src={iconSrc} alt="{mod.name} icon" class="mx-auto block h-36 w-36 object-contain" />
 								{:else}
 									<div class="flex h-36 w-full items-center justify-center">
 										<span class="font-mono text-4xl font-bold text-stone-700">{abbrev(mod.name)}</span>
