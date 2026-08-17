@@ -2,6 +2,7 @@
 	import PostLayout from '$lib/components/posts/PostLayout.svelte';
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
 	import GlossaryTerm from '$lib/components/GlossaryTerm.svelte';
+	import ShortAnswer from '$lib/components/posts/ShortAnswer.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
 	import { builds } from '$lib/data/builds';
 	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
@@ -129,36 +130,22 @@
 	youtubeUrl={build.youtubeUrl}
 >
 
-	<!-- ── Introduction ──────────────────────────────────────────────────── -->
-	<!-- ── The short answer ──────────────────────────────────────────────────
-	     Deliberately the first thing on the page and written as a self-contained
-	     answer: readers who only want the verdict get it without scrolling, and
-	     search/AI engines have a quotable conclusion instead of having to infer
-	     one from the tables further down. -->
-	<section id="verdict" class="border-b border-stone-800 py-16">
-		<div class="mx-auto max-w-4xl px-8">
-			<p class="mb-3 text-s font-semibold tracking-widest text-green-600 uppercase">The Short Answer</p>
-			<h2 class="mb-8 text-center text-3xl font-bold text-white">
-				Which Bamboo Farm Is Fastest?
-			</h2>
+	<ShortAnswer id="verdict" heading="Which Bamboo Farm Is Fastest?">
+		<p>
+			<strong class="text-white">It depends on how big you build.</strong> Below 3 chunks of area,
+			the fastest bamboo farm in Minecraft is the
+			<strong class="text-white">timed piston farm</strong> — the one that crushes the bamboo with
+			pistons, running 40 items in its hopper clock. Above 3 chunks, the
+			<strong class="text-white">flying machine farm</strong> takes over as the fastest.
+		</p>
+		<p>
+			The reason is how each design scales. The timed farm holds a flat
+			<strong class="text-white">17 bamboo per bamboo block per hour</strong> no matter how large or
+			small you make it. The flying machine farm's rate per block only climbs as the area grows,
+			crossing that same 17 figure at 3 chunks and pulling ahead beyond it.
+		</p>
 
-			<div class="border-2 border-green-800 bg-stone-900 px-8 py-8">
-				<p class="text-xl leading-relaxed text-stone-200">
-					<strong class="text-white">It depends on how big you build.</strong> Below roughly three
-					chunks of area, the fastest bamboo farm in Minecraft is the
-					<strong class="text-white">timed piston farm</strong> — the one that crushes the bamboo
-					with pistons, running 40 items in its hopper clock. Above about three chunks, the
-					<strong class="text-white">flying machine farm</strong> takes over as the fastest.
-				</p>
-				<p class="mt-5 text-xl leading-relaxed text-stone-200">
-					The reason is how each design scales. The timed farm holds a flat
-					<strong class="text-white">17 bamboo per bamboo block per hour</strong> no matter how
-					large or small you make it. The flying machine farm's rate per block only climbs as the
-					area grows, crossing that same 17 figure at around three chunks and pulling ahead
-					beyond it.
-				</p>
-			</div>
-
+		{#snippet footer()}
 			<!-- Concrete head-to-head at the crossover point -->
 			<div class="mt-6 grid grid-cols-1 gap-px bg-stone-700 sm:grid-cols-2">
 				<div class="bg-stone-950 px-8 py-8 text-center">
@@ -177,16 +164,16 @@
 				</div>
 			</div>
 			<p class="mt-3 text-center text-xs text-stone-600">
-				At three chunks the timed farm is still marginally ahead — that is the crossover point.
-				Build wider and the flying machine keeps climbing while the timed farm stays flat.
+				At 3 chunks the timed farm is still marginally ahead — that is the crossover point. Build
+				wider and the flying machine keeps climbing while the timed farm stays flat.
 			</p>
 
 			<p class="mt-8 text-lg leading-relaxed text-stone-400">
 				The full methodology, all five farms, and the lag and resource costs behind these numbers
 				are below.
 			</p>
-		</div>
-	</section>
+		{/snippet}
+	</ShortAnswer>
 
 	<section id="intro" class="border-b border-stone-800 py-16">
 		<div class="mx-auto max-w-4xl px-8">

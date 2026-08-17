@@ -3,6 +3,7 @@
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
 	import SongPlayer from '$lib/components/posts/SongPlayer.svelte';
 	import Seo from '$lib/components/global/Seo.svelte';
+	import ShortAnswer from '$lib/components/posts/ShortAnswer.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
 	import { builds } from '$lib/data/builds';
 	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
@@ -202,6 +203,7 @@
 
 	// ── Sidebar nav ──────────────────────────────────────────────────────────
 	const navSections: NavSection[] = [
+		{ id: 'short-answer', label: 'The Short Answer' },
 		{ id: 'intro',  label: 'Introduction' },
 		{ id: 'prizes', label: 'The Prize Line-Up' },
 		{ id: 'panel',  label: 'The Control Panel' },
@@ -260,6 +262,25 @@
 	{navSections}
 	youtubeUrl={build.youtubeUrl}
 >
+
+	<ShortAnswer id="short-answer" heading="Can You Build a Working Claw Machine in Minecraft?">
+		<p>
+			<strong class="text-white">Yes.</strong> This Minecraft claw machine is built entirely in
+			<strong class="text-white">vanilla</strong> — no mods, no plugins, no resource packs. Press one
+			of nine buttons and it fetches the toy you picked, every time.
+		</p>
+		<p>
+			Each button is ringed in the same colour as the toy it belongs to. The claw drops from the top
+			of the cabinet, closes on that toy and lifts it inside. Flying machines carry it to the back,
+			drop it into a tile system that moves it to the front, and it unloads into the dropbox. A reset
+			button remembers the tile the toy came from and sends it back there.
+		</p>
+		<p>
+			There are nine toys, an on-screen countdown timer while the claw runs, and
+			<strong class="text-white">no way for a player to break it</strong> — no button order jams it.
+			Free world download for Minecraft 1.21.10.
+		</p>
+	</ShortAnswer>
 
 	<!-- ── Introduction ──────────────────────────────────────────────────── -->
 	<section id="intro" class="border-b border-stone-800 py-16">

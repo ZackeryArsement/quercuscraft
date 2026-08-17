@@ -2,6 +2,7 @@
 	import PostLayout from '$lib/components/posts/PostLayout.svelte';
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
 	import GlossaryTerm from '$lib/components/GlossaryTerm.svelte';
+	import ShortAnswer from '$lib/components/posts/ShortAnswer.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
 	import { builds } from '$lib/data/builds';
 	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
@@ -63,6 +64,7 @@
 	import Seo from '$lib/components/global/Seo.svelte';
 
 	const navSections: NavSection[] = [
+		{ id: 'short-answer', label: 'The Short Answer' },
 		{ id: 'metrics',  label: 'Performance' },
 		{ id: 'download', label: 'World Download' }
 	];
@@ -96,6 +98,23 @@
 	{navSections}
 	youtubeUrl={build.youtubeUrl}
 >
+
+	<ShortAnswer id="short-answer" heading="How Fast Is This Minecraft Bamboo Farm?">
+		<p>
+			<strong class="text-white">9,475 bamboo per hour from a single chunk</strong> at 20 TPS — 9,427
+			per <a href="/blog/etho-hour" class="text-green-400 underline-offset-2 hover:underline">Etho
+			Hour</a> once the rate is normalised for lag.
+		</p>
+		<p>
+			It harvests with a hopper minecart running on detector rails, so it uses
+			<strong class="text-white">no observers and no slime blocks</strong>. It is fully tileable, fits
+			in one chunk, and survives chunk loading and unloading — the minecart simply resumes when the
+			chunk reloads, with no reset needed.
+		</p>
+		<p>
+			Vanilla Minecraft Java 1.21.10+, no mods. Free world download.
+		</p>
+	</ShortAnswer>
 
 	<!-- ── Performance Metrics ───────────────────────────────────────────── -->
 	<section id="metrics" class="border-b border-stone-800 py-16">

@@ -33,7 +33,7 @@
 			<span class="text-green-500">QuercusCraft</span>
 		</h1>
 		<p class="mx-auto mb-10 max-w-xl text-xl text-stone-400">
-			A showcase of original VANILLA Minecraft builds — from technical anysis to complex redstone games.
+			A showcase of original VANILLA Minecraft builds — from technical analysis to complex redstone games.
 			Tutorials and world downloads included!
 		</p>
 		<div class="flex flex-wrap justify-center gap-3">

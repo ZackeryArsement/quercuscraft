@@ -90,6 +90,11 @@
 	<div class="mx-8 mb-6 sm:mx-12 lg:mx-16">
 		<p class="mb-1 text-xs font-semibold tracking-widest text-green-600 uppercase">Gallery</p>
 		<h1 class="text-3xl font-bold text-white">All Builds</h1>
+		<p class="mt-3 max-w-2xl leading-relaxed text-stone-400">
+			Every QuercusCraft build, each with a free world download — a playable chess board, a working
+			arcade claw machine, and tested bamboo farms. All built in vanilla Minecraft Java Edition:
+			no mods, no plugins, no datapacks.
+		</p>
 	</div>
 
 	<!-- Outer frame — filter bar + cards share one border -->

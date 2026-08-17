@@ -2,6 +2,7 @@
 	import PostLayout from '$lib/components/posts/PostLayout.svelte';
 	import WorldDownloadFooter from '$lib/components/posts/WorldDownloadFooter.svelte';
 	import Seo from '$lib/components/global/Seo.svelte';
+	import ShortAnswer from '$lib/components/posts/ShortAnswer.svelte';
 	import type { NavSection } from '$lib/components/posts/PostLayout.svelte';
 	import { builds } from '$lib/data/builds';
 	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
@@ -95,6 +96,7 @@
 
 	// ── Sidebar nav ──────────────────────────────────────────────────────────
 	const navSections: NavSection[] = [
+		{ id: 'short-answer',  label: 'The Short Answer' },
 		{ id: 'intro',         label: 'Introduction' },
 		{ id: 'full-build',    label: 'Full Build' },
 		{ id: 'how-it-works',  label: 'How It Works' },
@@ -142,6 +144,23 @@
 	{navSections}
 	youtubeUrl={build.youtubeUrl}
 >
+
+	<ShortAnswer id="short-answer" heading="Can You Play Chess in Minecraft?">
+		<p>
+			<strong class="text-white">Yes.</strong> Chess Valley is a full, playable game of chess running
+			in <strong class="text-white">vanilla Minecraft</strong> — no mods, no plugins, no command
+			blocks and no datapacks. Every piece physically moves across the board on redstone.
+		</p>
+		<p>
+			Captured pieces are sent to a graveyard behind each end of the board, pawns reaching the far
+			side can promote to a queen, rook or bishop, and a single button resets the board for the next
+			game. The pieces are four blocks wide, centred on 2×2 honey-slime tiles.
+		</p>
+		<p>
+			The world is a <strong class="text-white">free download</strong> for Minecraft 1.21.10, with an
+			in-world manual at spawn covering every rule.
+		</p>
+	</ShortAnswer>
 
 	<!-- ── Introduction ──────────────────────────────────────────────────── -->
 	<section id="intro" class="border-b border-stone-800 py-16">

@@ -3,6 +3,7 @@
 	import type { NavSection } from '$lib/components/posts/BlogLayout.svelte';
 	import { posts } from '$lib/data/posts';
 	import GlossaryTerm from '$lib/components/GlossaryTerm.svelte';
+	import ShortAnswer from '$lib/components/posts/ShortAnswer.svelte';
 	import { SITE_URL, abs, breadcrumbs, publisher, youTubeId, youTubeThumb, youTubeEmbed } from '$lib/seo';
 	const post = posts.find(p => p.href === '/blog/etho-hour')!;
 
@@ -62,6 +63,7 @@
 	import Seo from '$lib/components/global/Seo.svelte';
 
 	const navSections: NavSection[] = [
+		{ id: 'short-answer', label: 'The Short Answer' },
 		{ id: 'problem',    label: 'The Problem' },
 		{ id: 'tick',       label: 'The Tick' },
 		{ id: 'etho-clock', label: 'Etho Hopper Clock' },
@@ -99,6 +101,27 @@
 	{navSections}
 	youtubeUrl={post.youtubeUrl}
 >
+
+	<ShortAnswer id="short-answer" heading="What Is a Minecraft Tick, and What Is an Etho Hour?">
+		<p>
+			A <GlossaryTerm slug="tick">Minecraft tick</GlossaryTerm> is one step of the game loop. Minecraft
+			targets <strong class="text-white">20 ticks per second</strong>, so one tick is 0.05 seconds — but
+			that is a target, not a promise. Under load the tick rate drops, and every timer in the game
+			slows with it. That is why a farm rate quoted "per hour" is not reproducible.
+		</p>
+		<p>
+			An <GlossaryTerm slug="etho-hopper-clock">Etho hopper clock</GlossaryTerm> fixes this by counting
+			ticks instead of seconds. Two hoppers pass items back and forth, and each transfer starts an
+			8-tick cooldown, so a clock holding <em>x</em> items runs
+			<strong class="text-white">8x − 6 ticks</strong> per cycle.
+		</p>
+		<p>
+			An <strong class="text-white">Etho Hour</strong> is 150 items in that clock — 1,194 ticks per
+			cycle — counted 60 times: <strong class="text-white">71,640 game ticks</strong>. That is ~59.7
+			real minutes at 20 TPS and ~79.6 at 15 TPS, but it is always exactly 71,640 ticks, which makes
+			any rate measured against it reproducible on any machine.
+		</p>
+	</ShortAnswer>
 
 	<!-- ── The Problem ───────────────────────────────────────────────────── -->
 	<section id="problem" class="border-b border-stone-800 py-16">
