@@ -10,13 +10,14 @@ export const builds: BuildCard[] = [
 		tags: ['Technical', 'Game', 'Redstone', 'Vanilla'],
 		href: '/builds/arcade-claw-machine',
 		featured: true,
-		// The build cards are ~3.4:1, which crops half the height off a 16:9 shot.
-		// The cabinet front is a tall subject and survived that badly, so the card
-		// uses the button panel instead: it fills the width, reads at a glance, and
-		// shows the nine colour-coded controls. ARCADE_CLAW.webp is still the page
-		// hero and the social card, where the aspect ratio is far less extreme.
-		image: 'ARCADE_BUTTON_PANEL.webp',
-		alt: 'The claw machine control panel — nine colour-framed buttons, each matching one of the nine prizes',
+		// The build cards are ~3.4:1, so object-cover throws away half the height of
+		// a 16:9 shot. This is a band cut from ARCADE_CLAW.webp at exactly that
+		// ratio — the prize pit, framed so the nine toys fill the centre while the
+		// dark left third stays clear for the title overlay. Cropping the marquee
+		// instead put "R-QADE" directly under the title text. ARCADE_CLAW.webp is
+		// still the page hero and the social card, where the ratio is far gentler.
+		image: 'ARCADE_PRIZES.webp',
+		alt: 'Inside the claw machine prize pit — nine colourful toys arranged on the coloured tiles behind the glass',
 		youtubeUrl: 'https://www.youtube.com/watch?v=0S7wxkARBO4&t=554s',
 		videoUploadDate: '2026-08-13T12:00:00-05:00'
 	},
@@ -42,7 +43,8 @@ export const builds: BuildCard[] = [
 		description: 'Innovative, tileable bamboo farm that does not break during chunk unloading',
 		tags: ['Survival', 'Technical', 'Farm', 'Bamboo'],
 		href: '/builds/detector-bamboo-farm',
-		featured: true,
+		// Unfeatured to make room for the arcade — FeaturedBuilds shows only 3.
+		featured: false,
 		image: 'DETECTOR_RAIL_FARM.webp',
 		alt: 'Minecart actively harvesting bamboo in original bamboo farm',
 		youtubeUrl: 'https://www.youtube.com/watch?v=WUqqw2ixf5M&t=56s',
